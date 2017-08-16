@@ -6,7 +6,6 @@ export const DEL_CARD = 'DEL_CARD';
 export const EDIT_CARD = 'EDIT_CARD';
 
 //action creators
-
 export const addCard = (card) => {
   return {
     type: ADD_CARD,
