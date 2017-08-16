@@ -7,7 +7,6 @@ export const EDIT_CARD = 'EDIT_CARD';
 
 //action creators
 export const addCard = (card) => {
-  console.log(card);
   return {
     type: ADD_CARD,
     id: nextCardId++,

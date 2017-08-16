@@ -10,6 +10,7 @@ const kanbanReducer = (state = [], action) => {
           priority: action.priority,
           createdBy: action.createdBy,
           assignedTo: action.assignedTo,
+          status: action.status
         }
       ];
 
