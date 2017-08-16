@@ -1,4 +1,5 @@
 const kanbanReducer = (state = [], action) => {
+  console.log(action);
   switch (action.type) {
     case 'ADD_CARD':
       return [
@@ -8,8 +9,7 @@ const kanbanReducer = (state = [], action) => {
           title: action.title,
           priority: action.priority,
           createdBy: action.createdBy,
-          assignedBy: action.assignedBy,
-          status: 'queue'
+          assignedTo: action.assignedTo,
         }
       ];
 
@@ -27,7 +27,7 @@ const kanbanReducer = (state = [], action) => {
           title: action.title,
           priority: action.priority,
           createdBy: action.createdBy,
-          assignedBy: action.assignedBy,
+          assignedTo: action.assignedTo,
           status: action.status
         };
       });

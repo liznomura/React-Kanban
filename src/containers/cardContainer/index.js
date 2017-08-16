@@ -1,13 +1,10 @@
-import { React, Component } from 'react';
-import { connect } from 'react-redux';
-import Card from '../../components/card.js';
+import React from "react";
+import { connect } from "react-redux";
+import Card from "../../components/card.js";
 
-class Card extends Component {
+class CardContainer extends React.Component {
   constructor(props) {
     super(props);
-
-
-    // bind functions here
   }
 
   // handler for status
@@ -17,22 +14,25 @@ class Card extends Component {
   // deleting card
 
   render() {
-    return(
-
-      )
+    return (<div>
+        {this.props.cards.map(card => <Card key={card.id} {...card} />)}
+      </div>
+    );
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     cards: state
-  }
-}
+  };
+};
 
-const mapDispatchToProps = (dispatch) => {
-  //updating card here
-}
+const mapDispatchToProps = dispatch => {
+  return {
 
-Card = connect(mapStateToProps, mapDispatchToProps)(Card);
+  };
+};
 
-export default Card;
+CardContainer = connect(mapStateToProps, mapDispatchToProps)(CardContainer);
+
+export default CardContainer;
