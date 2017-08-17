@@ -70,7 +70,7 @@ class NewCardForm extends React.Component {
             onChange={this.handleChange}
             value={this.state.assignedTo}
           />
-          <button type="submit">Add Task</button>
+          <button type="submit" className="submitBtn">Add Task</button>
         </form>
       </div>
     );
