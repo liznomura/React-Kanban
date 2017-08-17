@@ -1,7 +1,7 @@
 const kanbanReducer = (state = [], action) => {
-  console.log('hitting reducer', action);
+  console.log("hitting reducer", action);
   switch (action.type) {
-    case 'ADD_CARD':
+    case "ADD_CARD":
       return [
         ...state,
         {
@@ -14,12 +14,12 @@ const kanbanReducer = (state = [], action) => {
         }
       ];
 
-    case 'DEL_CARD':
-    console.log('hitting reducer');
+    case "DEL_CARD":
+      console.log("hitting reducer");
       let filter = state.filter(card => card.id !== parseInt(action.id));
       return filter;
 
-    case 'EDIT_CARD':
+    case "EDIT_CARD":
       return state.map(card => {
         if (card.id !== action.id) {
           return card;
