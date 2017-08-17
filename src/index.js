@@ -1,6 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App.js';
-import './App.css';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import App from './containers/App';
+import './styles.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import kanbanReducer from './reducers';
+
+import { createStore } from 'redux';
+const store = createStore(kanbanReducer);
+
+render(
+  <Provider store={store}>
+  <BrowserRouter>
+  <App />
+  </BrowserRouter>
+  </Provider>,
+  document.getElementById('root')
+  );
