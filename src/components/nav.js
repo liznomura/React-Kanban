@@ -1,12 +1,20 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+
+function visibilityToggle() {
+  let form = document.getElementById('formContainer');
+
+  form.classList.toggle('toggleShow');
+}
 
 const Nav = () =>
   <div className="nav">
-    <ul>
-      <li><Link to="/">Kanban</Link></li>
-      <li><Link to="#">+ New Task</Link></li>
-    </ul>
+    <div>
+      <Link to="/">Kanban</Link>
+    </div>
+    <div className="newTask" onClick={visibilityToggle}>
+      <Link to="#">+ New Task</Link>
+    </div>
   </div>;
 
 export default Nav;

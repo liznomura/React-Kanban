@@ -7,18 +7,10 @@ class Done extends React.Component {
   //   super(props);
   // }
 
-  // handler for status
-
-  // handler for priority
-
-  // deleting card
-  // handleDelete(e) {
-
-  // }
-
   render() {
     return (
       <div className="done">
+      <div className="colHeading">Done</div>
         {this.props.cards
           .filter(card => card.status === "done")
           .map(card => <Card key={card.id} {...card} />)}

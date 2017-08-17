@@ -38,6 +38,7 @@ class NewCardForm extends React.Component {
 
   render() {
     return (
+      <div className="formContainer" id="formContainer">
       <form onSubmit={this.handleSubmit}>
       <input
       type="text"
@@ -68,6 +69,7 @@ class NewCardForm extends React.Component {
       />
       <button type="submit">Add Task</button>
       </form>
+      </div>
       )
   }
 }

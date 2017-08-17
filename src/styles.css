@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
+/*
+COLORS
+*/
 body {
   margin: 0;
   padding: 0;
@@ -6,13 +9,104 @@ body {
   font-size: 12px;
   letter-spacing: 1px; }
 
-ul {
+.app {
+  height: 100%;
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: auto; }
+
+.nav {
+  width: 100%;
+  padding: 8px 12px;
   display: flex;
   justify-content: space-between;
-  list-style-type: none;
-  list-style-position: inside; }
-
-li {
+  align-items: center;
+  background: #4d525b;
+  color: white;
   text-transform: uppercase; }
-  li a {
-    text-decoration: none; }
+  .nav .newTask {
+    padding: 5px;
+    border: 1px solid white; }
+  .nav a {
+    text-decoration: none;
+    color: white;
+    letter-spacing: 0.2em;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s; }
+    .nav a:hover {
+      background: white;
+      color: #4d525b; }
+
+.formContainer {
+  display: none;
+  width: 100%;
+  padding: 10px;
+  background: #4d525b; }
+  .formContainer[class*="toggleShow"] {
+    display: block; }
+
+.kanbanBoard {
+  display: flex;
+  justify-content: space-between;
+  height: 500px;
+  width: 100%; }
+
+.inQueue,
+.inProgress,
+.done {
+  width: 33%;
+  background: white;
+  overflow: hidden; }
+
+.colHeading {
+  text-transform: uppercase;
+  text-align: center;
+  margin: 10px;
+  background: rgba(255, 255, 255, 0.8); }
+
+.cardContainer {
+  height: 92%;
+  overflow: auto; }
+
+.inProgress {
+  border-left: 1px solid #4d525b;
+  border-right: 1px solid #4d525b; }
+
+.low,
+.medium,
+.high,
+.blocker {
+  margin: 5px;
+  padding: 5px;
+  box-sizing: content-box; }
+
+.low {
+  clear: both;
+  background: rgba(0, 255, 0, 0.2);
+  border: 1px solid rgba(0, 153, 0, 0.2); }
+
+.medium {
+  clear: both;
+  background: rgba(255, 255, 0, 0.2);
+  border: 1px solid rgba(153, 153, 0, 0.2); }
+
+.high {
+  clear: both;
+  background: rgba(255, 0, 0, 0.2);
+  border: 1px solid rgba(153, 0, 0, 0.2); }
+
+.blocker {
+  clear: both;
+  background: rgba(51, 153, 255, 0.2);
+  border: 1px solid rgba(0, 102, 204, 0.2); }
+
+.floatRight {
+  float: right; }
+
+.link {
+  text-decoration: underline;
+  text-transform: uppercase; }

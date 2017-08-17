@@ -7,18 +7,10 @@ class InProgress extends React.Component {
   //   super(props);
   // }
 
-  // handler for status
-
-  // handler for priority
-
-  // deleting card
-  // handleDelete(e) {
-
-  // }
-
   render() {
     return (
       <div className="inProgress">
+      <div className="colHeading">In Progress</div>
         {this.props.cards
           .filter(card => card.status === "progress")
           .map(card => <Card key={card.id} {...card} />)}

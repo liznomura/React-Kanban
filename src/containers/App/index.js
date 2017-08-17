@@ -4,7 +4,7 @@ import NewCardForm from '../NewCardForm';
 import KanbanBoard from '../KanbanBoard';
 
 const App = () => (
-      <div>
+      <div className="app">
       <Nav />
       <NewCardForm />
       <KanbanBoard />

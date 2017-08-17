@@ -16,6 +16,7 @@ export const addCard = (card) => {
 };
 
 export const delCard = (id) => {
+    console.log('hitting action', id);
   return {
     type: DEL_CARD,
     id
