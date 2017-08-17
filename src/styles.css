@@ -29,17 +29,30 @@ body {
   text-transform: uppercase; }
   .nav .newTask {
     padding: 5px;
-    border: 1px solid white; }
-  .nav a {
-    text-decoration: none;
-    color: white;
-    letter-spacing: 0.2em;
+    border: 1px solid white;
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
-    transition: all 0.5s; }
-    .nav a:hover {
-      background: white;
-      color: #4d525b; }
+    transition: all 0.5s;
+    background: transparent;
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.2em;
+    cursor: pointer; }
+    .nav .newTask:hover {
+      background: white; }
+      .nav .newTask:hover:hover a {
+        color: #4d525b; }
+  .nav a {
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+    background: transparent;
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.2em;
+    cursor: pointer; }
 
 .formContainer {
   display: none;
@@ -48,6 +61,23 @@ body {
   background: #4d525b; }
   .formContainer[class*="toggleShow"] {
     display: block; }
+
+.submitBtn {
+  margin: 0 10px;
+  padding: 5px 8px;
+  border: 1px solid white;
+  background: transparent;
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s; }
+  .submitBtn:hover {
+    background: white;
+    color: #4d525b; }
 
 .kanbanBoard {
   display: flex;
