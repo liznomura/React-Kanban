@@ -1,8 +1,9 @@
-import React from "react";
-import { connect } from "react-redux";
-import Card from "../../components/card.js";
+import React from 'react';
+import { connect } from 'react-redux';
+import Card from '../../components/card.js';
 
 class InQueue extends React.Component {
+
   render() {
     return (
       <div className="inQueue">
@@ -13,7 +14,7 @@ class InQueue extends React.Component {
             .map(card =>
               <Card
                 key={card.id}
-                handleDelete={this.props.handleDelete}
+                handleDelete={this.props.handleDelete} handleEdit={this.props.handleEdit}
                 {...card}
               />
             )}

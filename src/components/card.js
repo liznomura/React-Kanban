@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const Card = ({ id, title, priority, assignedTo, createdBy, handleDelete }) =>
+const Card = ({ id, title, priority, assignedTo, createdBy, handleDelete, handleEdit }) =>
   <div className={priority}>
     <h1>
       {title}
@@ -10,14 +10,12 @@ const Card = ({ id, title, priority, assignedTo, createdBy, handleDelete }) =>
     </small>
     <br />
     <small>
-      Assigned to: {assignedTo}
+      Assigned by: {createdBy}
     </small>
     <br />
-    <small onClick={handleDelete} id={id} className="link">
-      delete
-    </small>
+  <small id={id} className="delete" onClick={handleDelete}>Delete</small>
     <small className="floatRight">
-      {createdBy}
+      {assignedTo}
     </small>
   </div>;
 

@@ -10,11 +10,13 @@ class KanbanBoard extends React.Component {
     super(props);
 
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
   }
 
-  // handler for status
+  handleEdit(e) {
+    console.log(e.target);
+  }
 
-  // handler for priority
 
   handleDelete(e) {
     this.props.deleteCard(e.target.id);
@@ -23,9 +25,9 @@ class KanbanBoard extends React.Component {
   render() {
     return (
       <div className="kanbanBoard">
-        <InQueue handleDelete={this.handleDelete} />
-        <InProgress handleDelete={this.handleDelete} />
-        <Done handleDelete={this.handleDelete} />
+        <InQueue handleDelete={this.handleDelete} handleEdit={this.handleEdit}/>
+        <InProgress handleDelete={this.handleDelete}handleEdit={this.handleEdit} />
+        <Done handleDelete={this.handleDelete} handleEdit={this.handleEdit} />
       </div>
     );
   }

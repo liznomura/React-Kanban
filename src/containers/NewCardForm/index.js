@@ -70,12 +70,18 @@ class NewCardForm extends React.Component {
             onChange={this.handleChange}
             value={this.state.assignedTo}
           />
-          <button type="submit" className="submitBtn">Add Task</button>
+          <button type="submit" className="submitBtn" onClick={ visibilityToggle }>Add Task</button>
         </form>
       </div>
     );
   }
 }
+
+function visibilityToggle() {
+  let form = document.getElementById('formContainer');
+  form.classList.toggle('toggleShow');
+}
+
 const mapStateToProps = state => {
   return {};
 };
