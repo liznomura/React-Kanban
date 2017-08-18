@@ -1,23 +1,20 @@
-const kanbanReducer = (state = [], action) => {
-  console.log("hitting reducer", action);
+const initialState = {
+  cards: []
+};
+
+const kanbanReducer = (state = initialState, action) => {
+  console.log('action in reducer', action.id)
   switch (action.type) {
     case "ADD_CARD":
-      return [
-        ...state,
-        {
-          id: action.id,
-          title: action.title,
-          priority: action.priority,
-          createdBy: action.createdBy,
-          assignedTo: action.assignedTo,
-          status: action.status
-        }
-      ];
+      return {
+        cards: [ ...state.cards, action.card ]
+      };
 
     case "DEL_CARD":
-      console.log("hitting reducer");
-      let filter = state.filter(card => card.id !== parseInt(action.id));
-      return filter;
+      let filteredCards = state.cards.filter(card => card.id !== parseInt(action.id));
+      return {
+        cards: filteredCards
+      }
 
     case "EDIT_CARD":
       return state.map(card => {
@@ -34,9 +31,6 @@ const kanbanReducer = (state = [], action) => {
           status: action.status
         };
       });
-
-    // case 'MOVE_CARD':
-    //   ;
 
     default:
       return state;

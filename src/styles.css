@@ -60,7 +60,10 @@ body {
   padding: 10px;
   background: #4d525b; }
   .formContainer[class*="toggleShow"] {
-    display: block; }
+    display: block;
+    position: absolute;
+    top: 43px;
+    z-index: 999; }
 
 .submitBtn {
   margin: 0 10px;
@@ -82,6 +85,7 @@ body {
 .kanbanBoard {
   display: flex;
   justify-content: space-between;
+  position: relative;
   height: 500px;
   width: 100%; }
 
@@ -110,8 +114,9 @@ body {
 .medium,
 .high,
 .blocker {
-  margin: 5px;
-  padding: 5px;
+  margin: 0 5px 5px 5px;
+  padding: 2px 5px;
+  font-size: 14px;
   box-sizing: content-box;
   position: relative; }
 
@@ -139,5 +144,11 @@ body {
   float: right; }
 
 .delete {
+  position: absolute;
   text-transform: uppercase;
-  cursor: pointer; }
+  cursor: pointer;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s; }
+  .delete:hover {
+    font-weight: 900; }

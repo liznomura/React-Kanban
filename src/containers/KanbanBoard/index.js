@@ -14,9 +14,8 @@ class KanbanBoard extends React.Component {
   }
 
   handleEdit(e) {
-    console.log(e.target);
+    console.log('lul not finished aha');
   }
-
 
   handleDelete(e) {
     this.props.deleteCard(e.target.id);

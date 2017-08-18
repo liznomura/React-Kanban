@@ -5,6 +5,7 @@ import Card from '../../components/card.js';
 class InQueue extends React.Component {
 
   render() {
+    console.log('props', this.props.cards);
     return (
       <div className="inQueue">
         <div className="colHeading">In Queue</div>
@@ -26,7 +27,7 @@ class InQueue extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    cards: state
+    cards: state.cards
   };
 };
 

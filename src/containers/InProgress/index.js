@@ -21,7 +21,7 @@ class InProgress extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    cards: state
+    cards: state.cards
   };
 };
 

@@ -2,9 +2,11 @@ import React from 'react';
 
 const Card = ({ id, title, priority, assignedTo, createdBy, handleDelete, handleEdit }) =>
   <div className={priority}>
-    <h1>
+      <small id={id} className="delete" onClick={handleDelete}>&times;</small>
+      <div className="cardText">
+    <p>
       {title}
-    </h1>
+    </p>
     <small>
       Priority: {priority}
     </small>
@@ -12,11 +14,10 @@ const Card = ({ id, title, priority, assignedTo, createdBy, handleDelete, handle
     <small>
       Assigned by: {createdBy}
     </small>
-    <br />
-  <small id={id} className="delete" onClick={handleDelete}>Delete</small>
     <small className="floatRight">
       {assignedTo}
     </small>
+    </div>
   </div>;
 
 export default Card;
