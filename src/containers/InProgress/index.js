@@ -13,7 +13,7 @@ class InProgress extends React.Component {
       <div className="colHeading">In Progress</div>
         {this.props.cards
           .filter(card => card.status === "progress")
-          .map(card => <Card key={card.id} {...card} />)}
+          .map(card => <Card key={card.id} handleDelete={this.props.handleDelete} {...card} />)}
       </div>
     );
   }

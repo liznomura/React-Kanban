@@ -24,6 +24,7 @@
     "redux-thunk": "^2.2.0",
     "sequelize": "^4.5.0"
   },
+  "proxy": "http://localhost:3001",
   "scripts": {
     "build-css": "node-sass-chokidar src/scss/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/scss/ -o src/ --watch --recursive",

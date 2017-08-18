@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { delCard } from "../../actions";
+import { loadCards, delCard } from "../../actions";
 import InQueue from "../InQueue";
 import InProgress from "../InProgress";
 import Done from "../Done";
@@ -21,6 +21,10 @@ class KanbanBoard extends React.Component {
     this.props.deleteCard(e.target.id);
   }
 
+  componentWillMount() {
+    this.props.loadCards();
+  }
+
   render() {
     return (
       <div className="kanbanBoard">
@@ -34,12 +38,16 @@ class KanbanBoard extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    cards: state
+    cards: state.cards
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
+    loadCards: () => {
+      dispatch(loadCards())
+    },
+
     deleteCard: id => {
       dispatch(delCard(id));
     }

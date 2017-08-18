@@ -1,23 +1,35 @@
 //action types
-export const ADD_CARD = "ADD_CARD";
-export const DEL_CARD = "DEL_CARD";
-export const EDIT_CARD = "EDIT_CARD";
+export const ADD_CARD = 'ADD_CARD';
+export const DEL_CARD = 'DEL_CARD';
+export const EDIT_CARD = 'EDIT_CARD';
+export const LOAD_CARDS = 'LOAD_CARDS';
 
 //action creators
 let nextCardId = 0;
 
+export const loadCards = () => {
+  return dispatch => {
+    fetch('/cards')
+      .then(cards => cards.json())
+      .then(cards => {
+        dispatch({
+          type: LOAD_CARDS,
+          cards
+        });
+      })
+      .catch(err => console.log(err));
+  };
+};
+
 export const addCard = card => {
-  console.log(nextCardId);
-  console.log(card);
   nextCardId++;
   return {
     type: ADD_CARD,
-    card: {id: nextCardId, status: "queue", ...card}
+    card: { id: nextCardId, status: 'queue', ...card }
   };
 };
 
 export const delCard = id => {
-  console.log(id)
   return {
     type: DEL_CARD,
     id
