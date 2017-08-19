@@ -8,14 +8,14 @@ class Done extends React.Component {
   // }
 
   render() {
+    console.log(this.props.cards);
     return (
       <div className="done">
         <div className="colHeading">Done</div>
         {this.props.cards
           .filter(card => card.status === 'done')
           .map(card =>
-            <Card
-              key={card.id}
+            <Card key={card.id}
               handleDelete={this.props.handleDelete}
               {...card}
             />

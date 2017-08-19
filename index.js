@@ -59,7 +59,7 @@ let cards = [
     assignedTo: "Merlin"
   },
   {
-    _id: 25,
+    id: 25,
     title:
       "Make Better Styles, Make Better Styles, Make Better Styles, Make Better Styles, Make Better Styles, Make Better Styles",
     priority: "medium",

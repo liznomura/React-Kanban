@@ -1,13 +1,18 @@
-import React from "react";
-import { render } from "react-dom";
-import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
-import App from "./containers/App";
-import "./styles.css";
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import App from './containers/App';
+import './styles.css';
 
-import kanbanReducer from "./reducers";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
 
-import { createStore, applyMiddleware } from "redux";
+import kanbanReducer from './reducers';
+
+import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 const store = createStore(
   kanbanReducer,
@@ -17,9 +22,9 @@ const store = createStore(
 
 render(
   <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <Router>
+      <Route exact path="/" component={App} />
+    </Router>
   </Provider>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
