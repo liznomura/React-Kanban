@@ -7,7 +7,6 @@
     "express": "^4.15.4",
     "express-session": "^1.15.5",
     "method-override": "^2.3.9",
-    "node-sass-chokidar": "0.0.3",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "pg": "^7.1.2",
@@ -34,7 +33,6 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-sass": "^3.1.0"
+    "node-sass-chokidar": "0.0.3"
   }
 }
