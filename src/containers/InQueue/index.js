@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Card from '../../components/card.js';
 
-class InQueue extends React.Component {
+class InQueue extends Component {
 
   render() {
     return (
-      <div className="inQueue">
+      <div className="column inQueue">
         <div className="colHeading">In Queue</div>
         <div className="cardContainer">
           {this.props.cards

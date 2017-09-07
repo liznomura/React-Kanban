@@ -10,7 +10,7 @@ class Done extends React.Component {
   render() {
     console.log(this.props.cards);
     return (
-      <div className="done">
+      <div className="column done">
         <div className="colHeading">Done</div>
         {this.props.cards
           .filter(card => card.status === 'done')

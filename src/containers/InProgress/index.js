@@ -9,7 +9,7 @@ class InProgress extends React.Component {
 
   render() {
     return (
-      <div className="inProgress">
+      <div className="column inProgress">
       <div className="colHeading">In Progress</div>
         {this.props.cards
           .filter(card => card.status === "progress")

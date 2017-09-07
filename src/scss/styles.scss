@@ -118,6 +118,10 @@ body {
   width: 33%;
   background: white;
   overflow: hidden;
+
+  & .over {
+    border: 1px dashed $nav;
+  }
 }
 
 .colHeading {
