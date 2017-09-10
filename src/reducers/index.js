@@ -1,27 +1,21 @@
 import { LOAD_CARDS, ADD_CARD, DEL_CARD } from '../actions';
 
 const initialState = {
+  columns: ['in queue', 'in progress', 'done'],
   cards: []
 };
 
 const kanbanReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_CARDS:
-    console.log(action);
-      return {
-        cards: [ ...action.cards ]
-      };
+      return Object.assign({}, state, { cards: [ ...action.cards ] });
 
     case ADD_CARD:
-      return {
-        cards: [ ...state.cards, action.card ]
-      };
+      return Object.assign({}, state, { cards: [ ...state.cards, action.card ] });
 
     case DEL_CARD:
       let filteredCards = state.cards.filter(card => card.id !== parseInt(action.id, 10));
-      return {
-        cards: filteredCards
-      }
+      return Object.assign({}, state, { cards: filteredCards });
 
     // case "EDIT_CARD":
     //   return state.map(card => {

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addCard } from '../../actions';
 
-class NewCardForm extends React.Component {
+class NewCardForm extends Component {
   constructor(props) {
     super(props);
 
@@ -97,6 +97,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-NewCardForm = connect(mapStateToProps, mapDispatchToProps)(NewCardForm);
-
-export default NewCardForm;
+export default connect(mapStateToProps, mapDispatchToProps)(NewCardForm);

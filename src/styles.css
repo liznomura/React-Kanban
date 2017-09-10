@@ -56,19 +56,23 @@ body {
 
 .formContainer {
   display: none;
-  width: 100%;
-  padding: 10px;
-  background: #4d525b; }
+  width: 80%;
+  padding: 8px 12px;
+  background: #4d525b;
+  box-sizing: border-box; }
   .formContainer[class*="toggleShow"] {
     display: block;
     position: absolute;
     top: 43px;
     z-index: 999; }
+  .formContainer input {
+    margin: 5px; }
 
 .submitBtn {
-  margin: 0 10px;
+  margin: auto;
   padding: 5px 8px;
   border: 1px solid white;
+  float: right;
   background: transparent;
   color: white;
   text-transform: uppercase;
@@ -89,12 +93,12 @@ body {
   height: 500px;
   width: 100%; }
 
-.inQueue,
-.inProgress,
-.done {
+.column {
   width: 33%;
   background: white;
   overflow: hidden; }
+  .column .over {
+    border: 1px dashed #4d525b; }
 
 .colHeading {
   text-transform: uppercase;
@@ -152,3 +156,6 @@ body {
   transition: all 0.5s; }
   .delete:hover {
     font-weight: 900; }
+
+.over {
+  border: 1px dotted grey; }

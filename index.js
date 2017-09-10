@@ -69,17 +69,6 @@ let cards = [
   }
 ];
 
-app.get("/api/cups", (req, res) => {
-  res.json([
-    {
-      color: "red"
-    },
-    {
-      color: "blue"
-    }
-  ]);
-});
-
 app.get("/cards", (req, res) => {
   res.json(cards);
 });

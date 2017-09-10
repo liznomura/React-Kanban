@@ -79,9 +79,10 @@ body {
 
 .formContainer {
   display: none;
-  width: 100%;
-  padding: 10px;
+  width: 80%;
+  padding: 8px 12px;
   background: $nav;
+  box-sizing: border-box;
 
   &[class*="toggleShow"] {
     display: block;
@@ -89,12 +90,17 @@ body {
     top: 43px;
     z-index: 999;
   }
+
+  input {
+    margin: 5px;
+  }
 }
 
 .submitBtn {
-  margin: 0 10px;
+  margin: auto;
   padding: 5px 8px;
   border: 1px solid white;
+  float: right;
   @include whiteLinkText;
   @include trans;
 
@@ -112,9 +118,7 @@ body {
   width: 100%;
 }
 
-.inQueue,
-.inProgress,
-.done {
+.column {
   width: 33%;
   background: white;
   overflow: hidden;
@@ -189,4 +193,8 @@ body {
   &:hover {
     font-weight: 900;
   }
+}
+
+.over {
+  border: 1px dotted grey;
 }

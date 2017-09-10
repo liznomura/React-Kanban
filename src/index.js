@@ -6,8 +6,7 @@ import './styles.css';
 
 import {
   BrowserRouter as Router,
-  Route,
-  Link
+  Route
 } from 'react-router-dom';
 
 import kanbanReducer from './reducers';

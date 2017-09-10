@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadCards, delCard } from '../../actions';
-import InQueue from '../InQueue';
-import InProgress from '../InProgress';
-import Done from '../Done';
+import Columns from '../Columns';
+// import InQueue from '../InQueue';
+// import InProgress from '../InProgress';
+// import Done from '../Done';
 
 class KanbanBoard extends Component {
   constructor(props) {
     super(props);
 
     this.handleDelete = this.handleDelete.bind(this);
-    // this.handleEdit = this.handleEdit.bind(this);
-  }
-
-  handleDragStart(e) {
-    this.style.opacity = '0.4';
   }
 
   handleDelete(e) {
@@ -25,27 +21,12 @@ class KanbanBoard extends Component {
     this.props.loadCards();
   }
 
-  componentDidMount() {
-    let targets = document.querySelectorAll('.column');
-    let source = document.querySelectorAll('')
-
-    targets.forEach(col => {
-      col.addEventListener('drag')
-    })
-  }
-
   render() {
     return (
       <div className="kanbanBoard">
-        <InQueue
-          handleDelete={this.handleDelete}
-          handleEdit={this.handleEdit}
-        />
-        <InProgress
-          handleDelete={this.handleDelete}
-          handleEdit={this.handleEdit}
-        />
-        <Done handleDelete={this.handleDelete} handleEdit={this.handleEdit} />
+      {this.props.columns.map(column => {
+        return <Columns columnType={column} handleDelete={this.handleDelete} />
+      })}
       </div>
     );
   }
@@ -53,6 +34,7 @@ class KanbanBoard extends Component {
 
 const mapStateToProps = state => {
   return {
+    columns: state.columns,
     cards: state.cards
   };
 };
@@ -69,6 +51,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-KanbanBoard = connect(mapStateToProps, mapDispatchToProps)(KanbanBoard);
-
-export default KanbanBoard;
+export default connect(mapStateToProps, mapDispatchToProps)(KanbanBoard);
