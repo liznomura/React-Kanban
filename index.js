@@ -69,9 +69,9 @@ let cards = [
   }
 ];
 
-app.get("/cards", (req, res) => {
-  res.json(cards);
-});
+// app.get("/cards", (req, res) => {
+//   res.json(cards);
+// });
 
 app.listen(PORT, () => {
   console.log(`Server running on ${PORT}`);

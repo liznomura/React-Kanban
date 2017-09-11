@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadCards, delCard } from '../../actions';
+import { delCard } from '../../actions';
 import Columns from '../Columns';
-// import InQueue from '../InQueue';
-// import InProgress from '../InProgress';
-// import Done from '../Done';
 
 class KanbanBoard extends Component {
   constructor(props) {
@@ -18,7 +15,7 @@ class KanbanBoard extends Component {
   }
 
   componentWillMount() {
-    this.props.loadCards();
+    // this.props.loadCards();
   }
 
   render() {
@@ -41,9 +38,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadCards: () => {
-      dispatch(loadCards());
-    },
 
     deleteCard: id => {
       dispatch(delCard(id));

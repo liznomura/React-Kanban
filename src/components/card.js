@@ -10,8 +10,8 @@ class Card extends Component {
 
   handleDragStart(e) {
     e.target.style.opacity = '0.4';
-    e.dataTransfer.effectAllowed = 'copy';
-    e.dataTransfer.setData('text', e.target.dataset.type);
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/html', e.target);
   }
 
   handleDragEnd(e) {
@@ -20,7 +20,7 @@ class Card extends Component {
 
   render() {
     return (
-      <div className={this.props.priority} draggable="true" onDragStart={this.props.handleDragStart} onDragEnd={this.props.handleDragEnd}>
+      <div className={this.props.priority} draggable="true" onDragStart={this.handleDragStart} onDragEnd={this.handleDragEnd}>
       <small id={this.props.id} className="delete" onClick={this.props.handleDelete}>&times;</small>
       <div className="cardText">
       <p>

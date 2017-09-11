@@ -21,11 +21,12 @@ class Columns extends Component {
   }
 
   handleDragEnter(e) {
+    console.log('dragEnter');
     e.target.classList.add('over');
-    console.log(e);
   }
 
   handleDragLeave(e) {
+    console.log('dragLeave');
     e.target.classList.remove('over');
   }
 
@@ -35,7 +36,7 @@ class Columns extends Component {
     }
 
     let data = e.dataTransfer.getData('text');
-
+    console.log(data);
     e.target.classList.remove('over');
     return false;
   }
@@ -44,13 +45,13 @@ class Columns extends Component {
     return (
       <div className="column">
         <div className="colHeading">{this.props.columnType}</div>
-        <div className="cardContainer">
+        <div className="cardContainer" onDrop={this.handleDrop} onDragOver={this.handleDragOver} onDragEnter={this.handleDragEnter} onDragLeave={this.handleDragLeave}>
           {this.props.cards
             .filter(card => card.status === this.props.columnType.toLowerCase())
             .map(card =>
               <Card
                 key={card.id}
-                handleDelete={this.props.handleDelete} handleEdit={this.props.handleEdit} onDragOver={this.handleDragOver} onDragEnter={this.handleDragEnter} onDragLeave={this.handleDragLeave} onDrop={this.handleDrop}
+                handleDelete={this.props.handleDelete} handleEdit={this.props.handleEdit}
                 {...card}
               />
             )}
