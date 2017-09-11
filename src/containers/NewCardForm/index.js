@@ -1,20 +1,17 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { addCard } from '../../actions';
 
-class NewCardForm extends Component {
+class NewCardForm extends PureComponent {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       title: '',
       priority: 'low',
       createdBy: '',
       assignedTo: ''
-    };
-
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    }
   }
 
   handleChange(e) {
@@ -24,36 +21,37 @@ class NewCardForm extends Component {
 
     this.setState({
       [name]: value
-    });
+    })
   }
 
   handleSubmit(e) {
-    e.preventDefault();
-    this.props.addCard(this.state);
+    e.preventDefault()
+    this.props.addCard(this.state)
+
     this.setState({
       title: '',
       priority: 'low',
       createdBy: '',
       assignedTo: ''
-    });
+    })
   }
 
   render() {
     return (
       <div id="form" className="form">
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit.bind(this)}>
           <input
             className="form__input"
             type="text"
             name="title"
             placeholder="Title"
-            onChange={this.handleChange}
+            onChange={this.handleChange.bind(this)}
             value={this.state.title}
           />
           <select
             className="form__select"
             name="priority"
-            onChange={this.handleChange}
+            onChange={this.handleChange.bind(this)}
             value={this.state.priority}
           >
             <option value="low">Low</option>
@@ -66,7 +64,7 @@ class NewCardForm extends Component {
             type="text"
             name="createdBy"
             placeholder="Created By"
-            onChange={this.handleChange}
+            onChange={this.handleChange.bind(this)}
             value={this.state.createdBy}
           />
           <input
@@ -74,27 +72,24 @@ class NewCardForm extends Component {
             type="text"
             name="assignedTo"
             placeholder="Assigned To"
-            onChange={this.handleChange}
+            onChange={this.handleChange.bind(this)}
             value={this.state.assignedTo}
           />
           <button type="submit" className="form__add-card-btn" onClick={this.props.visibilityToggle }>Add Task</button>
         </form>
       </div>
-    );
+    )
   }
 }
 
-
-const mapStateToProps = state => {
-  return {};
-};
+const mapStateToProps = state => {}
 
 const mapDispatchToProps = dispatch => {
   return {
     addCard: card => {
       dispatch(addCard(card));
     }
-  };
-};
+  }
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewCardForm);
+export default connect(mapStateToProps, mapDispatchToProps)(NewCardForm)

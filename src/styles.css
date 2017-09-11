@@ -33,7 +33,7 @@ body {
   background: #4d525b;
   color: white;
   text-transform: uppercase; }
-  .nav .newTask {
+  .nav .nav__new-task-btn {
     padding: 5px;
     border: 1px solid white;
     -webkit-transition: all 0.5s;
@@ -45,9 +45,9 @@ body {
     text-decoration: none;
     letter-spacing: 0.2em;
     cursor: pointer; }
-    .nav .newTask:hover {
+    .nav .nav__new-task-btn:hover {
       background: white; }
-      .nav .newTask:hover:hover a {
+      .nav .nav__new-task-btn:hover:hover a {
         color: #4d525b; }
   .nav a {
     -webkit-transition: all 0.5s;
