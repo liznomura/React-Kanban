@@ -36,16 +36,19 @@ class Columns extends PureComponent {
           onDragEnter={this.handleDragEnter.bind(this)}
           onDragLeave={this.handleDragLeave.bind(this)}
         >
-          {this.props.cards
+          {
+            this.props.cards
             .filter(card =>
-              card.status === this.props.columnType.toLowerCase())
+              card.status === this.props.columnType.toLowerCase()
+            )
             .map(card =>
               <Card
                 key={card.id}
                 handleDelete={this.props.handleDelete.bind(this)}
                 {...card}
               />
-            )}
+            )
+          }
         </div>
       </div>
     )
