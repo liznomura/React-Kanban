@@ -146,50 +146,42 @@ body {
   }
 }
 
-.inProgress {
-  border-left: 1px solid $nav;
-  border-right: 1px solid $nav;
-}
-
-.low,
-.medium,
-.high,
-.blocker {
+.card {
   margin: 0 5px 5px 5px;
   padding: 2px 5px;
   font-size: 14px;
   position: relative;
 }
 
-.low {
-  clear: both;
+.card--low {
   background: $low;
   border: 1px solid darken($low, 20%);
 }
 
-.medium {
-  clear: both;
+.card--medium {
   background: $medium;
   border: 1px solid darken($medium, 20%);
 }
 
-.high {
-  clear: both;
+.card--high {
   background: $high;
   border: 1px solid darken($high, 20%);
 }
 
-.blocker {
-  clear: both;
+.card--blocker {
   background: $blocker;
   border: 1px solid darken($blocker, 20%);
+}
+
+.card--opacity {
+  opacity: 0.4;
 }
 
 .floatRight {
   float: right;
 }
 
-.delete {
+.card__delete {
   position: absolute;
   text-transform: uppercase;
   cursor: pointer;

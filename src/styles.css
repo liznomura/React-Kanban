@@ -114,50 +114,42 @@ body {
   .column.over {
     border: 1px dashed #4d525b; }
 
-.inProgress {
-  border-left: 1px solid #4d525b;
-  border-right: 1px solid #4d525b; }
-
-.low,
-.medium,
-.high,
-.blocker {
+.card {
   margin: 0 5px 5px 5px;
   padding: 2px 5px;
   font-size: 14px;
   position: relative; }
 
-.low {
-  clear: both;
+.card--low {
   background: rgba(0, 255, 0, 0.2);
   border: 1px solid rgba(0, 153, 0, 0.2); }
 
-.medium {
-  clear: both;
+.card--medium {
   background: rgba(255, 255, 0, 0.2);
   border: 1px solid rgba(153, 153, 0, 0.2); }
 
-.high {
-  clear: both;
+.card--high {
   background: rgba(255, 0, 0, 0.2);
   border: 1px solid rgba(153, 0, 0, 0.2); }
 
-.blocker {
-  clear: both;
+.card--blocker {
   background: rgba(51, 153, 255, 0.2);
   border: 1px solid rgba(0, 102, 204, 0.2); }
+
+.card--opacity {
+  opacity: 0.4; }
 
 .floatRight {
   float: right; }
 
-.delete {
+.card__delete {
   position: absolute;
   text-transform: uppercase;
   cursor: pointer;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   transition: all 0.5s; }
-  .delete:hover {
+  .card__delete:hover {
     font-weight: 900; }
 
 .over {

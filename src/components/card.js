@@ -1,27 +1,43 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
-class Card extends Component {
+class Card extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.handleDragStart = this.handleDragStart.bind(this);
-    this.handleDragEnd = this.handleDragEnd.bind(this);
+    this.state = {
+      dragging: false
+    }
   }
 
   handleDragStart(e) {
-    e.target.style.opacity = '0.4';
-    e.dataTransfer.effectAllowed = 'move';
-    e.dataTransfer.setData('text/html', e.target);
+    this.setState({
+      dragging: true
+    })
   }
 
   handleDragEnd(e) {
-    e.target.style.opacity = '1';
+    this.setState({
+      dragging: false
+    })
   }
 
   render() {
+    const classes = `card ${'card--'.concat(this.props.priority)} ${this.state.dragging ? 'card--opacity' : ''}`
+
     return (
-      <div className={this.props.priority} draggable="true" onDragStart={this.handleDragStart} onDragEnd={this.handleDragEnd}>
-        <span id={this.props.id} className="delete" onClick={this.props.handleDelete}>&times;</span>
+      <div
+        className={classes}
+        draggable="true"
+        onDragStart={this.handleDragStart.bind(this)}
+        onDragEnd={this.handleDragEnd.bind(this)}
+      >
+        <span
+          id={this.props.id}
+          className="card__delete"
+          onClick={this.props.handleDelete}
+        >
+        &times;
+        </span>
         <div className="cardText">
           <p>{this.props.title}</p>
           <span>Priority: {this.props.priority}</span>
