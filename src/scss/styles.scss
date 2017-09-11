@@ -13,6 +13,12 @@ $high: rgba(255, 0, 0, 0.2); // red
 $blocker: rgba(51, 153, 255, 0.2); // blue
 $done: rgba(128, 128, 128, 0.2); // grey
 
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 @mixin trans {
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
@@ -28,6 +34,7 @@ $done: rgba(128, 128, 128, 0.2); // grey
   cursor: pointer;
 }
 
+html,
 body {
   margin: 0;
   padding: 0;
@@ -77,26 +84,25 @@ body {
   }
 }
 
-.formContainer {
+.form {
   display: none;
+  position: absolute;
+  top: 43px;
   width: 80%;
   padding: 8px 12px;
   background: $nav;
-  box-sizing: border-box;
+  z-index: 999;
 
-  &[class*="toggleShow"] {
+  &.form--display {
     display: block;
-    position: absolute;
-    top: 43px;
-    z-index: 999;
-  }
-
-  input {
-    margin: 5px;
   }
 }
 
-.submitBtn {
+.form__input {
+    margin: 5px;
+}
+
+.form__add-card-btn {
   margin: auto;
   padding: 5px 8px;
   border: 1px solid white;
@@ -152,7 +158,6 @@ body {
   margin: 0 5px 5px 5px;
   padding: 2px 5px;
   font-size: 14px;
-  box-sizing: content-box;
   position: relative;
 }
 

@@ -3,10 +3,17 @@ import Nav from '../../components/nav.js';
 import NewCardForm from '../NewCardForm';
 import KanbanBoard from '../KanbanBoard';
 
+function visibilityToggle() {
+  let form = document.getElementById('form');
+  form.classList.toggle('form--display');
+}
+
 const App = () => (
       <div className="app">
-      <Nav />
-      <NewCardForm />
+      <Nav
+      visibilityToggle={visibilityToggle}/>
+      <NewCardForm
+      visibilityToggle={visibilityToggle}/>
       <KanbanBoard />
       </div>
 )
