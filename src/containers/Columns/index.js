@@ -3,14 +3,6 @@ import { connect } from 'react-redux'
 import Card from '../../components/card.js'
 
 class Columns extends PureComponent {
-  constructor(props) {
-    super(props)
-
-    this.handleDragOver = this.handleDragOver.bind(this)
-    this.handleDragEnter = this.handleDragEnter.bind(this)
-    this.handleDragLeave = this.handleDragLeave.bind(this)
-    this.handleDrop = this.handleDrop.bind(this)
-  }
 
   handleDragOver(e) {
     e.preventDefault()
@@ -36,21 +28,21 @@ class Columns extends PureComponent {
   render() {
     return (
       <div className="column">
-        <div className="colHeading">{this.props.columnType}</div>
+        <div className="column__heading">{this.props.columnType}</div>
         <div
-        className="cardContainer"
-        onDrop={this.handleDrop}
-        onDragOver={this.handleDragOver}
-        onDragEnter={this.handleDragEnter}
-        onDragLeave={this.handleDragLeave}
+          className="column__cards"
+          onDrop={this.handleDrop.bind(this)}
+          onDragOver={this.handleDragOver.bind(this)}
+          onDragEnter={this.handleDragEnter.bind(this)}
+          onDragLeave={this.handleDragLeave.bind(this)}
         >
           {this.props.cards
-            .filter(card => card.status === this.props.columnType.toLowerCase())
+            .filter(card =>
+              card.status === this.props.columnType.toLowerCase())
             .map(card =>
               <Card
                 key={card.id}
-                handleDelete={this.props.handleDelete}
-                handleEdit={this.props.handleEdit}
+                handleDelete={this.props.handleDelete.bind(this)}
                 {...card}
               />
             )}

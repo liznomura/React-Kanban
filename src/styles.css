@@ -92,7 +92,7 @@ body {
     background: white;
     color: #4d525b; }
 
-.kanbanBoard {
+.kanban-board {
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -103,18 +103,16 @@ body {
   width: 33%;
   background: white;
   overflow: hidden; }
-  .column .over {
+  .column .column__heading {
+    text-transform: uppercase;
+    text-align: center;
+    margin: 10px;
+    background: rgba(255, 255, 255, 0.8); }
+  .column .column__cards {
+    height: 92%;
+    overflow: auto; }
+  .column.over {
     border: 1px dashed #4d525b; }
-
-.colHeading {
-  text-transform: uppercase;
-  text-align: center;
-  margin: 10px;
-  background: rgba(255, 255, 255, 0.8); }
-
-.cardContainer {
-  height: 92%;
-  overflow: auto; }
 
 .inProgress {
   border-left: 1px solid #4d525b;

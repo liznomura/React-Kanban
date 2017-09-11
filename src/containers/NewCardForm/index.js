@@ -82,7 +82,9 @@ class NewCardForm extends PureComponent {
   }
 }
 
-const mapStateToProps = state => {}
+const mapStateToProps = state => {
+  return {}
+}
 
 const mapDispatchToProps = dispatch => {
   return {

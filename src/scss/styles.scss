@@ -116,7 +116,7 @@ body {
   }
 }
 
-.kanbanBoard {
+.kanban-board {
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -129,21 +129,21 @@ body {
   background: white;
   overflow: hidden;
 
-  & .over {
-    border: 1px dashed $nav;
+  .column__heading {
+    text-transform: uppercase;
+    text-align: center;
+    margin: 10px;
+    background: rgba(255, 255, 255, 0.8);
   }
-}
 
-.colHeading {
-  text-transform: uppercase;
-  text-align: center;
-  margin: 10px;
-  background: rgba(255, 255, 255, 0.8);
-}
-
-.cardContainer {
+  .column__cards {
   height: 92%;
   overflow: auto;
+  }
+
+  &.over {
+    border: 1px dashed $nav;
+  }
 }
 
 .inProgress {
