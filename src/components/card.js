@@ -21,22 +21,14 @@ class Card extends Component {
   render() {
     return (
       <div className={this.props.priority} draggable="true" onDragStart={this.handleDragStart} onDragEnd={this.handleDragEnd}>
-      <small id={this.props.id} className="delete" onClick={this.props.handleDelete}>&times;</small>
-      <div className="cardText">
-      <p>
-      {this.props.title}
-      </p>
-      <small>
-      Priority: {this.props.priority}
-      </small>
-      <br />
-      <small>
-      Assigned by: {this.props.createdBy}
-      </small>
-      <small className="floatRight">
-      {this.props.assignedTo}
-      </small>
-      </div>
+        <span id={this.props.id} className="delete" onClick={this.props.handleDelete}>&times;</span>
+        <div className="cardText">
+          <p>{this.props.title}</p>
+          <span>Priority: {this.props.priority}</span>
+          <br />
+          <span>Assigned by: {this.props.createdBy}</span>
+          <span className="floatRight">{this.props.assignedTo}</span>
+        </div>
       </div>
     );
   }

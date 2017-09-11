@@ -40,9 +40,10 @@ class NewCardForm extends Component {
 
   render() {
     return (
-      <div className="formContainer" id="formContainer">
+      <div id="form" className="form">
         <form onSubmit={this.handleSubmit}>
           <input
+            className="form__input"
             type="text"
             name="title"
             placeholder="Title"
@@ -50,6 +51,7 @@ class NewCardForm extends Component {
             value={this.state.title}
           />
           <select
+            className="form__select"
             name="priority"
             onChange={this.handleChange}
             value={this.state.priority}
@@ -60,6 +62,7 @@ class NewCardForm extends Component {
             <option value="blocker">Blocker</option>
           </select>
           <input
+            className="form__input"
             type="text"
             name="createdBy"
             placeholder="Created By"
@@ -67,23 +70,20 @@ class NewCardForm extends Component {
             value={this.state.createdBy}
           />
           <input
+            className="form__input"
             type="text"
             name="assignedTo"
             placeholder="Assigned To"
             onChange={this.handleChange}
             value={this.state.assignedTo}
           />
-          <button type="submit" className="submitBtn" onClick={ visibilityToggle }>Add Task</button>
+          <button type="submit" className="form__add-card-btn" onClick={this.props.visibilityToggle }>Add Task</button>
         </form>
       </div>
     );
   }
 }
 
-function visibilityToggle() {
-  let form = document.getElementById('formContainer');
-  form.classList.toggle('toggleShow');
-}
 
 const mapStateToProps = state => {
   return {};

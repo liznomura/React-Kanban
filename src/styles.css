@@ -2,6 +2,12 @@
 /*
 COLORS
 */
+*,
+*:before,
+*:after {
+  box-sizing: border-box; }
+
+html,
 body {
   margin: 0;
   padding: 0;
@@ -54,21 +60,21 @@ body {
     letter-spacing: 0.2em;
     cursor: pointer; }
 
-.formContainer {
+.form {
   display: none;
+  position: absolute;
+  top: 43px;
   width: 80%;
   padding: 8px 12px;
   background: #4d525b;
-  box-sizing: border-box; }
-  .formContainer[class*="toggleShow"] {
-    display: block;
-    position: absolute;
-    top: 43px;
-    z-index: 999; }
-  .formContainer input {
-    margin: 5px; }
+  z-index: 999; }
+  .form.form--display {
+    display: block; }
 
-.submitBtn {
+.form__input {
+  margin: 5px; }
+
+.form__add-card-btn {
   margin: auto;
   padding: 5px 8px;
   border: 1px solid white;
@@ -82,7 +88,7 @@ body {
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   transition: all 0.5s; }
-  .submitBtn:hover {
+  .form__add-card-btn:hover {
     background: white;
     color: #4d525b; }
 
@@ -121,7 +127,6 @@ body {
   margin: 0 5px 5px 5px;
   padding: 2px 5px;
   font-size: 14px;
-  box-sizing: content-box;
   position: relative; }
 
 .low {
