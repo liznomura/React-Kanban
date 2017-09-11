@@ -6,7 +6,7 @@ $sml: 12px;
 /*
 COLORS
 */
-$nav: #4d525b;
+$nav: rgba(77, 82, 91, 1);
 $low: rgba(0, 255, 0, 0.2); // green
 $medium: rgba(255, 255, 0, 0.2); // yellow
 $high: rgba(255, 0, 0, 0.2); // red
@@ -33,7 +33,7 @@ body {
   padding: 0;
   font-family: $f;
   font-size: $sml;
-  letter-spacing: 1px;
+  letter-spacing: 0.1em;
 }
 
 .app {
@@ -79,19 +79,28 @@ body {
 
 .formContainer {
   display: none;
-  width: 100%;
-  padding: 10px;
+  width: 80%;
+  padding: 8px 12px;
   background: $nav;
+  box-sizing: border-box;
 
   &[class*="toggleShow"] {
     display: block;
+    position: absolute;
+    top: 43px;
+    z-index: 999;
+  }
+
+  input {
+    margin: 5px;
   }
 }
 
 .submitBtn {
-  margin: 0 10px;
+  margin: auto;
   padding: 5px 8px;
   border: 1px solid white;
+  float: right;
   @include whiteLinkText;
   @include trans;
 
@@ -104,16 +113,19 @@ body {
 .kanbanBoard {
   display: flex;
   justify-content: space-between;
+  position: relative;
   height: 500px;
   width: 100%;
 }
 
-.inQueue,
-.inProgress,
-.done {
+.column {
   width: 33%;
   background: white;
   overflow: hidden;
+
+  & .over {
+    border: 1px dashed $nav;
+  }
 }
 
 .colHeading {
@@ -137,9 +149,11 @@ body {
 .medium,
 .high,
 .blocker {
-  margin: 5px;
-  padding: 5px;
+  margin: 0 5px 5px 5px;
+  padding: 2px 5px;
+  font-size: 14px;
   box-sizing: content-box;
+  position: relative;
 }
 
 .low {
@@ -170,7 +184,17 @@ body {
   float: right;
 }
 
-.link {
-  text-decoration: underline;
+.delete {
+  position: absolute;
   text-transform: uppercase;
+  cursor: pointer;
+  @include trans;
+
+  &:hover {
+    font-weight: 900;
+  }
+}
+
+.over {
+  border: 1px dotted grey;
 }

@@ -7,7 +7,7 @@ body {
   padding: 0;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 12px;
-  letter-spacing: 1px; }
+  letter-spacing: 0.1em; }
 
 .app {
   height: 100%;
@@ -56,16 +56,23 @@ body {
 
 .formContainer {
   display: none;
-  width: 100%;
-  padding: 10px;
-  background: #4d525b; }
+  width: 80%;
+  padding: 8px 12px;
+  background: #4d525b;
+  box-sizing: border-box; }
   .formContainer[class*="toggleShow"] {
-    display: block; }
+    display: block;
+    position: absolute;
+    top: 43px;
+    z-index: 999; }
+  .formContainer input {
+    margin: 5px; }
 
 .submitBtn {
-  margin: 0 10px;
+  margin: auto;
   padding: 5px 8px;
   border: 1px solid white;
+  float: right;
   background: transparent;
   color: white;
   text-transform: uppercase;
@@ -82,15 +89,16 @@ body {
 .kanbanBoard {
   display: flex;
   justify-content: space-between;
+  position: relative;
   height: 500px;
   width: 100%; }
 
-.inQueue,
-.inProgress,
-.done {
+.column {
   width: 33%;
   background: white;
   overflow: hidden; }
+  .column .over {
+    border: 1px dashed #4d525b; }
 
 .colHeading {
   text-transform: uppercase;
@@ -110,9 +118,11 @@ body {
 .medium,
 .high,
 .blocker {
-  margin: 5px;
-  padding: 5px;
-  box-sizing: content-box; }
+  margin: 0 5px 5px 5px;
+  padding: 2px 5px;
+  font-size: 14px;
+  box-sizing: content-box;
+  position: relative; }
 
 .low {
   clear: both;
@@ -137,6 +147,15 @@ body {
 .floatRight {
   float: right; }
 
-.link {
-  text-decoration: underline;
-  text-transform: uppercase; }
+.delete {
+  position: absolute;
+  text-transform: uppercase;
+  cursor: pointer;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s; }
+  .delete:hover {
+    font-weight: 900; }
+
+.over {
+  border: 1px dotted grey; }

@@ -7,7 +7,6 @@
     "express": "^4.15.4",
     "express-session": "^1.15.5",
     "method-override": "^2.3.9",
-    "node-sass-chokidar": "0.0.3",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "pg": "^7.1.2",
@@ -21,8 +20,10 @@
     "redux": "^3.7.2",
     "redux-devtools": "^3.4.0",
     "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0",
     "sequelize": "^4.5.0"
   },
+  "proxy": "http://localhost:3001",
   "scripts": {
     "build-css": "node-sass-chokidar src/scss/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/scss/ -o src/ --watch --recursive",
@@ -32,7 +33,6 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-sass": "^3.1.0"
+    "node-sass-chokidar": "0.0.3"
   }
 }

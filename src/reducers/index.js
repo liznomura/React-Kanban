@@ -1,42 +1,37 @@
-const kanbanReducer = (state = [], action) => {
-  console.log("hitting reducer", action);
+import { LOAD_CARDS, ADD_CARD, DEL_CARD } from '../actions';
+
+const initialState = {
+  columns: ['in queue', 'in progress', 'done'],
+  cards: []
+};
+
+const kanbanReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "ADD_CARD":
-      return [
-        ...state,
-        {
-          id: action.id,
-          title: action.title,
-          priority: action.priority,
-          createdBy: action.createdBy,
-          assignedTo: action.assignedTo,
-          status: action.status
-        }
-      ];
+    case LOAD_CARDS:
+      return Object.assign({}, state, { cards: [ ...action.cards ] });
 
-    case "DEL_CARD":
-      console.log("hitting reducer");
-      let filter = state.filter(card => card.id !== parseInt(action.id));
-      return filter;
+    case ADD_CARD:
+      return Object.assign({}, state, { cards: [ ...state.cards, action.card ] });
 
-    case "EDIT_CARD":
-      return state.map(card => {
-        if (card.id !== action.id) {
-          return card;
-        }
+    case DEL_CARD:
+      let filteredCards = state.cards.filter(card => card.id !== parseInt(action.id, 10));
+      return Object.assign({}, state, { cards: filteredCards });
 
-        return {
-          id: action.id,
-          title: action.title,
-          priority: action.priority,
-          createdBy: action.createdBy,
-          assignedTo: action.assignedTo,
-          status: action.status
-        };
-      });
+    // case "EDIT_CARD":
+    //   return state.map(card => {
+    //     if (card.id !== action.id) {
+    //       return card;
+    //     }
 
-    // case 'MOVE_CARD':
-    //   ;
+    //     return {
+    //       id: action.id,
+    //       title: action.title,
+    //       priority: action.priority,
+    //       createdBy: action.createdBy,
+    //       assignedTo: action.assignedTo,
+    //       status: action.status
+    //     };
+    //   });
 
     default:
       return state;

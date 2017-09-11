@@ -1,31 +1,29 @@
-import React from "react";
-import { connect } from "react-redux";
-import { delCard } from "../../actions";
-import InQueue from "../InQueue";
-import InProgress from "../InProgress";
-import Done from "../Done";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { delCard } from '../../actions';
+import Columns from '../Columns';
 
-class KanbanBoard extends React.Component {
+class KanbanBoard extends Component {
   constructor(props) {
     super(props);
 
     this.handleDelete = this.handleDelete.bind(this);
   }
 
-  // handler for status
-
-  // handler for priority
-
   handleDelete(e) {
     this.props.deleteCard(e.target.id);
+  }
+
+  componentWillMount() {
+    // this.props.loadCards();
   }
 
   render() {
     return (
       <div className="kanbanBoard">
-        <InQueue handleDelete={this.handleDelete} />
-        <InProgress handleDelete={this.handleDelete} />
-        <Done handleDelete={this.handleDelete} />
+      {this.props.columns.map(column => {
+        return <Columns columnType={column} handleDelete={this.handleDelete} />
+      })}
       </div>
     );
   }
@@ -33,18 +31,18 @@ class KanbanBoard extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    cards: state
+    columns: state.columns,
+    cards: state.cards
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
+
     deleteCard: id => {
       dispatch(delCard(id));
     }
   };
 };
 
-KanbanBoard = connect(mapStateToProps, mapDispatchToProps)(KanbanBoard);
-
-export default KanbanBoard;
+export default connect(mapStateToProps, mapDispatchToProps)(KanbanBoard);

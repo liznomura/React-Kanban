@@ -1,16 +1,16 @@
-import React from "react";
-import { connect } from "react-redux";
-import { addCard } from "../../actions";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { addCard } from '../../actions';
 
-class NewCardForm extends React.Component {
+class NewCardForm extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      title: "",
-      priority: "low",
-      createdBy: "",
-      assignedTo: ""
+      title: '',
+      priority: 'low',
+      createdBy: '',
+      assignedTo: ''
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,9 +22,6 @@ class NewCardForm extends React.Component {
     const value = target.value;
     const name = target.name;
 
-    console.log(name);
-    console.log(value);
-
     this.setState({
       [name]: value
     });
@@ -32,7 +29,13 @@ class NewCardForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.addCard({ ...this.state });
+    this.props.addCard(this.state);
+    this.setState({
+      title: '',
+      priority: 'low',
+      createdBy: '',
+      assignedTo: ''
+    });
   }
 
   render() {
@@ -70,12 +73,18 @@ class NewCardForm extends React.Component {
             onChange={this.handleChange}
             value={this.state.assignedTo}
           />
-          <button type="submit" className="submitBtn">Add Task</button>
+          <button type="submit" className="submitBtn" onClick={ visibilityToggle }>Add Task</button>
         </form>
       </div>
     );
   }
 }
+
+function visibilityToggle() {
+  let form = document.getElementById('formContainer');
+  form.classList.toggle('toggleShow');
+}
+
 const mapStateToProps = state => {
   return {};
 };
@@ -88,6 +97,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-NewCardForm = connect(mapStateToProps, mapDispatchToProps)(NewCardForm);
-
-export default NewCardForm;
+export default connect(mapStateToProps, mapDispatchToProps)(NewCardForm);
