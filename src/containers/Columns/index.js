@@ -3,31 +3,45 @@ import { connect } from 'react-redux'
 import Card from '../../components/card.js'
 
 class Columns extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isOver: false
+    }
+  }
 
   handleDragOver(e) {
+    console.log('dragOver')
     e.preventDefault()
-    return false
   }
 
   handleDragEnter(e) {
     console.log('dragEnter')
-    e.target.classList.add('over')
+    this.setState({
+      isOver: true
+    })
   }
 
   handleDragLeave(e) {
     console.log('dragLeave')
-    e.target.classList.remove('over')
+    this.setState({
+      isOver: false
+    })
   }
 
   handleDrop(e) {
+    console.log('drop')
     e.stopPropagation()
-    e.target.classList.remove('over')
-    return false
+    this.setState({
+      isOver: false
+    })
   }
 
   render() {
+    const classes = `column ${this.state.isOver ? 'column--over' : ''}`
     return (
-      <div className="column">
+      <div className={classes}>
         <div className="column__heading">{this.props.columnType}</div>
         <div
           className="column__cards"

@@ -111,7 +111,7 @@ body {
   .column .column__cards {
     height: 92%;
     overflow: auto; }
-  .column.over {
+  .column.column--over {
     border: 1px dashed #4d525b; }
 
 .card {
@@ -151,6 +151,3 @@ body {
   transition: all 0.5s; }
   .card__delete:hover {
     font-weight: 900; }
-
-.over {
-  border: 1px dotted grey; }

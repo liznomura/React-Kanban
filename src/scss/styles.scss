@@ -141,7 +141,7 @@ body {
   overflow: auto;
   }
 
-  &.over {
+  &.column--over {
     border: 1px dashed $nav;
   }
 }
@@ -190,8 +190,4 @@ body {
   &:hover {
     font-weight: 900;
   }
-}
-
-.over {
-  border: 1px dotted grey;
 }
