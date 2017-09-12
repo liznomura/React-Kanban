@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import Card from '../../components/card.js'
+import { moveCard, setDrag } from '../../actions'
 
 class Columns extends PureComponent {
   constructor(props) {
@@ -12,27 +13,25 @@ class Columns extends PureComponent {
   }
 
   handleDragOver(e) {
-    console.log('dragOver')
     e.preventDefault()
   }
 
   handleDragEnter(e) {
-    console.log('dragEnter')
     this.setState({
       isOver: true
     })
   }
 
   handleDragLeave(e) {
-    console.log('dragLeave')
     this.setState({
       isOver: false
     })
   }
 
-  handleDrop(e) {
-    console.log('drop')
+  handleMouseUp(e) {
     e.stopPropagation()
+    this.props.moveCard(e.target.dataset.name)
+    this.props.setDrag(false)
     this.setState({
       isOver: false
     })
@@ -45,7 +44,8 @@ class Columns extends PureComponent {
         <div className="column__heading">{this.props.columnType}</div>
         <div
           className="column__cards"
-          onDrop={this.handleDrop.bind(this)}
+          data-name={this.props.columnType}
+          onDrop={this.handleMouseUp.bind(this)}
           onDragOver={this.handleDragOver.bind(this)}
           onDragEnter={this.handleDragEnter.bind(this)}
           onDragLeave={this.handleDragLeave.bind(this)}
@@ -76,7 +76,15 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-  return {}
+  return {
+    moveCard: status => {
+      dispatch(moveCard(status))
+    },
+
+    setDrag: current => {
+      dispatch(setDrag(current))
+    }
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Columns)

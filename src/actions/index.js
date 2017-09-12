@@ -1,15 +1,16 @@
 //action types
-export const ADD_CARD = 'ADD_CARD';
-export const DEL_CARD = 'DEL_CARD';
-export const EDIT_CARD = 'EDIT_CARD';
-export const LOAD_CARDS = 'LOAD_CARDS';
-export const MOVE_CARD = 'MOVE_CARD';
+export const ADD_CARD = 'ADD_CARD'
+export const DEL_CARD = 'DEL_CARD'
+export const EDIT_CARD = 'EDIT_CARD'
+export const LOAD_CARDS = 'LOAD_CARDS'
+export const MOVE_CARD = 'MOVE_CARD'
+export const SET_DRAG = 'SET_DRAG'
 
 // note for later:
 //   add new columns by adding title to state.columns
 
 //action creators
-let nextCardId = 0;
+let nextCardId = 0
 
 // export const loadCards = () => {
 //   return dispatch => {
@@ -26,30 +27,38 @@ let nextCardId = 0;
 // };
 
 export const addCard = card => {
-  nextCardId++;
+  nextCardId++
   return {
     type: ADD_CARD,
     card: { id: nextCardId, status: 'in queue', ...card }
-  };
-};
+  }
+}
 
 export const delCard = id => {
   return {
     type: DEL_CARD,
     id
-  };
-};
+  }
+}
 
 export const editCard = card => {
   return {
     type: EDIT_CARD,
     ...card
-  };
-};
+  }
+}
 
-export const moveCard = card => {
+
+export const moveCard = status => {
   return {
     type: MOVE_CARD,
-    card: { ...card }
-  };
-};
+    status
+  }
+}
+
+export const setDrag = current => {
+  return {
+    type: SET_DRAG,
+    current
+  }
+}

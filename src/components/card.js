@@ -1,40 +1,32 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
+import { setDrag } from '../actions'
 
 class Card extends PureComponent {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      dragging: false
-    }
+  handleMouseDown(e) {
+    this.props.setDrag(e.target.id)
   }
 
-  handleDragStart(e) {
-    this.setState({
-      dragging: true
-    })
-  }
-
-  handleDragEnd(e) {
-    this.setState({
-      dragging: false
-    })
+  handleMouseUp(e) {
+    this.props.setDrag(false)
   }
 
   render() {
-    const classes = `card ${'card--'.concat(this.props.priority)} ${this.state.dragging ? 'card--opacity' : ''}`
+    const classes = `card card--${this.props.priority} ${this.props.dragging ? 'card--opacity' : ''}`
 
     return (
       <div
+        id={this.props.id}
         className={classes}
         draggable="true"
-        onDragStart={this.handleDragStart.bind(this)}
-        onDragEnd={this.handleDragEnd.bind(this)}
+        onDragStart={this.handleMouseDown.bind(this)}
+        onDragEnd={this.handleMouseUp.bind(this)}
       >
         <span
-          id={this.props.id}
           className="card__delete"
           onClick={this.props.handleDelete}
+          data-id={this.props.id}
         >
         &times;
         </span>
@@ -46,8 +38,22 @@ class Card extends PureComponent {
           <span className="floatRight">{this.props.assignedTo}</span>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Card;
+const mapStateToProps = state => {
+  return {
+    dragging: state.dragging
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setDrag: current => {
+      dispatch(setDrag(current))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Card)

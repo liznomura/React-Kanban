@@ -6,7 +6,7 @@ import Columns from '../Columns'
 class KanbanBoard extends PureComponent {
 
   handleDelete(e) {
-    this.props.deleteCard(e.target.id)
+    this.props.deleteCard(e.target.dataset.id)
   }
 
   componentWillMount() {
