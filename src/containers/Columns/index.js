@@ -13,26 +13,26 @@ class Columns extends PureComponent {
   }
 
   handleMouseEnter(e) {
-    console.log('enter')
-    this.setState({ isOver: true })
+    if(this.props.dragging !== false) {
+      this.setState({ isOver: true })
+    }
   }
 
   handleMouseLeave(e) {
-    console.log('leave')
-    this.setState({ isOver: false })
+    if(this.props.dragging !== false) {
+      this.setState({ isOver: false })
+    }
   }
 
   handleMouseUp(e) {
-    console.log('mouseUp')
-      console.log(this.props.dragging)
     if(this.props.dragging !== false) {
       this.props.moveCard(e.target.dataset.name)
       this.props.setDrag(false)
+      this.setState({ isOver: false })
     }
   }
 
   handleMouseDown(e) {
-    console.log('mouseDown')
     e.preventDefault()
     this.props.setDrag(e.target.id)
   }
