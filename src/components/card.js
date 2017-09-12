@@ -4,14 +4,6 @@ import { setDrag } from '../actions'
 
 class Card extends PureComponent {
 
-  handleMouseDown(e) {
-    this.props.setDrag(e.target.id)
-  }
-
-  handleMouseUp(e) {
-    this.props.setDrag(false)
-  }
-
   render() {
     const classes = `card card--${this.props.priority} ${this.props.dragging ? 'card--opacity' : ''}`
 
@@ -20,8 +12,7 @@ class Card extends PureComponent {
         id={this.props.id}
         className={classes}
         draggable="true"
-        onDragStart={this.handleMouseDown.bind(this)}
-        onDragEnd={this.handleMouseUp.bind(this)}
+        onDragStart={this.props.onDragStart}
       >
         <span
           className="card__delete"

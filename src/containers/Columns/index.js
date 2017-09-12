@@ -12,29 +12,29 @@ class Columns extends PureComponent {
     }
   }
 
-  handleDragOver(e) {
-    e.preventDefault()
+  handleMouseEnter(e) {
+    console.log('enter')
+    this.setState({ isOver: true })
   }
 
-  handleDragEnter(e) {
-    this.setState({
-      isOver: true
-    })
-  }
-
-  handleDragLeave(e) {
-    this.setState({
-      isOver: false
-    })
+  handleMouseLeave(e) {
+    console.log('leave')
+    this.setState({ isOver: false })
   }
 
   handleMouseUp(e) {
-    e.stopPropagation()
-    this.props.moveCard(e.target.dataset.name)
-    this.props.setDrag(false)
-    this.setState({
-      isOver: false
-    })
+    console.log('mouseUp')
+      console.log(this.props.dragging)
+    if(this.props.dragging !== false) {
+      this.props.moveCard(e.target.dataset.name)
+      this.props.setDrag(false)
+    }
+  }
+
+  handleMouseDown(e) {
+    console.log('mouseDown')
+    e.preventDefault()
+    this.props.setDrag(e.target.id)
   }
 
   render() {
@@ -45,10 +45,9 @@ class Columns extends PureComponent {
         <div
           className="column__cards"
           data-name={this.props.columnType}
-          onDrop={this.handleMouseUp.bind(this)}
-          onDragOver={this.handleDragOver.bind(this)}
-          onDragEnter={this.handleDragEnter.bind(this)}
-          onDragLeave={this.handleDragLeave.bind(this)}
+          onMouseUp={this.handleMouseUp.bind(this)}
+          onMouseEnter={this.handleMouseEnter.bind(this)}
+          onMouseLeave={this.handleMouseLeave.bind(this)}
         >
           {
             this.props.cards
@@ -59,6 +58,7 @@ class Columns extends PureComponent {
               <Card
                 key={card.id}
                 handleDelete={this.props.handleDelete.bind(this)}
+                onDragStart={this.handleMouseDown.bind(this)}
                 {...card}
               />
             )
@@ -71,6 +71,7 @@ class Columns extends PureComponent {
 
 const mapStateToProps = state => {
   return {
+    dragging: state.dragging,
     cards: state.cards
   }
 }
