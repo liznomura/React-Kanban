@@ -103,6 +103,8 @@ body {
   width: 33%;
   background: white;
   overflow: hidden; }
+  .column + .column {
+    border-left: 1px dotted #4d525b; }
   .column .column__heading {
     text-transform: uppercase;
     text-align: center;

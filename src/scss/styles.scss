@@ -129,6 +129,10 @@ body {
   background: white;
   overflow: hidden;
 
+  & + .column {
+    border-left: 1px dotted $nav;
+  }
+
   .column__heading {
     text-transform: uppercase;
     text-align: center;
