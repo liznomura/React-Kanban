@@ -34,7 +34,8 @@ class Columns extends PureComponent {
 
   handleMouseDown(e) {
     e.preventDefault()
-    this.props.setDrag(e.target.id)
+    const id = parseInt(e.target.id, 10);
+    this.props.setDrag(id)
   }
 
   render() {

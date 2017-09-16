@@ -75,7 +75,13 @@ class NewCardForm extends PureComponent {
             onChange={this.handleChange.bind(this)}
             value={this.state.assignedTo}
           />
-          <button type="submit" className="add-form__add-card-btn" onClick={this.props.visibilityToggle }>Add Task</button>
+          <button
+            type="submit"
+            className="add-form__add-card-btn"
+            onClick={this.props.visibilityToggle }
+          >
+            Add Task
+          </button>
         </form>
       </div>
     )
