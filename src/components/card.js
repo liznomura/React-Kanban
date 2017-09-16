@@ -18,6 +18,7 @@ class Card extends PureComponent {
 
     return (
       <div
+        id={this.props.id}
         className={classes}
         draggable="true"
         onDragStart={this.props.onDragStart}
