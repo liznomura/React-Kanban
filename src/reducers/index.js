@@ -1,6 +1,7 @@
-import { LOAD_CARDS, ADD_CARD, EDIT_CARD, DEL_CARD, MOVE_CARD, SET_DRAG } from '../actions'
+import { LOAD_CARDS, ADD_CARD, EDIT_CARD, DEL_CARD, MOVE_CARD, SET_DRAG, TOGGLE_EDIT } from '../actions'
 
 const initialState = {
+  editing: false,
   dragging: false,
   columns: ['in queue', 'in progress', 'done'],
   cards: [{
@@ -21,30 +22,20 @@ const kanbanReducer = (state = initialState, action) => {
     case ADD_CARD:
       return Object.assign({}, state, { cards: [ ...state.cards, action.card ] })
 
-    // case EDIT_CARD:
-    //   return Object.assign({}, state,
-    //   {
-    //     cards: state.cards
-    //       .map(card => {
-    //         if(card.id === )
-    //       })
-    //   }
-    //   )
-    // case "EDIT_CARD":
-    //   return state.map(card => {
-    //     if (card.id !== action.id) {
-    //       return card;
-    //     }
+    case EDIT_CARD:
+    console.log('reducer', action.card)
+      return Object.assign({}, state,
+        {
+          cards: state.cards
+            .map(card => {
+              if(card.id === action.card.id) {
+                card = {...action.card}
+              }
 
-    //     return {
-    //       id: action.id,
-    //       title: action.title,
-    //       priority: action.priority,
-    //       createdBy: action.createdBy,
-    //       assignedTo: action.assignedTo,
-    //       status: action.status
-    //     };
-    //   });
+              return card
+            })
+        }
+      )
 
     case DEL_CARD:
       return Object.assign({}, state,
@@ -72,6 +63,9 @@ const kanbanReducer = (state = initialState, action) => {
 
       case SET_DRAG:
         return Object.assign({}, state, { dragging: action.current })
+
+      case TOGGLE_EDIT:
+        return Object.assign({}, state, { editing: !state.editing })
 
     default:
       return state
