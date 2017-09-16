@@ -9,6 +9,8 @@ COLORS
 
 html,
 body {
+  height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
   font-family: "Source Sans Pro", sans-serif;
@@ -121,22 +123,51 @@ body {
   font-size: 14px;
   position: relative; }
 
-.card__delete {
+.card__controls {
   position: absolute;
-  text-transform: uppercase;
-  cursor: pointer;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  transition: all 0.5s; }
-  .card__delete:hover {
-    font-weight: 900; }
+  top: 2px;
+  right: 5px; }
+
+.card__edit {
+  height: 15px;
+  display: inline-flex;
+  align-items: center; }
+
+.card__delete {
+  position: relative;
+  display: inline-block;
+  width: 15px;
+  height: 15px; }
+  .card__delete:before, .card__delete:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: 3px;
+    border-radius: 2px;
+    background: #666666; }
+  .card__delete:before {
+    transform: translate(-50%, -50%) rotate(45deg); }
+  .card__delete:after {
+    transform: translate(-50%, -50%) rotate(-45deg); }
 
 .card__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   width: 100%;
   margin: 5px;
   font-size: 10px; }
-  .card__content h2, .card__content p {
-    margin: 2px; }
+  .card__content h2 {
+    margin: 0; }
+
+.card__assignments {
+  display: flex;
+  justify-content: space-between;
+  width: 100%; }
 
 .card--low {
   background: rgba(0, 255, 0, 0.2);

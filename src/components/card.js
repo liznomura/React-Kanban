@@ -22,34 +22,40 @@ class Card extends PureComponent {
         draggable="true"
         onDragStart={this.props.onDragStart}
       >
-        <div
-          className="card__delete"
-          onClick={this.props.handleDelete}
-          data-id={this.props.id}
-        >
-        &times;
+        <div className="card__controls">
+          <div
+            className="card__edit"
+            onClick={this.toggleEditing.bind(this)}
+          >edit</div>
+          <div
+            className="card__delete"
+            onClick={() => this.props.handleDelete(this.props.id)}
+          />
         </div>
-          {isEditing === cardId ? (
-            <div className="card__content">
-              <EditForm
-              cardId={cardId}
-              title={this.props.title}
-              priority={this.props.priority}
-              assignedBy={this.props.createdBy}
-              assignedTo={this.props.assignedTo}
-              status={this.props.status}
-              />
-            </div>
-            ) : (
-            <div className="card__content">
-              <h2>{this.props.title}</h2>
-              <p>Priority: {this.props.priority}</p>
+        {isEditing === cardId ? (
+          <div className="card__content">
+            <EditForm
+            cardId={cardId}
+            title={this.props.title}
+            priority={this.props.priority}
+            assignedBy={this.props.createdBy}
+            assignedTo={this.props.assignedTo}
+            status={this.props.status}
+            />
+          </div>
+          ) : (
+          <div className="card__content">
+            <h2>{this.props.title}</h2>
+            <div>Priority: {this.props.priority}</div>
+            <div className="card__assignments">
               <span>Assigned by: {this.props.createdBy}</span>
-              <span>{this.props.assignedTo}</span>
-              <span onClick={this.toggleEditing.bind(this)}>edit</span>
+              <div className="card__assigned-to">
+                <span>{this.props.assignedTo}</span>
+              </div>
             </div>
-            )
-          }
+          </div>
+          )
+        }
       </div>
     )
   }
