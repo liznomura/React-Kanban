@@ -60,7 +60,7 @@ body {
     letter-spacing: 0.2em;
     cursor: pointer; }
 
-.form {
+.add-form {
   display: none;
   position: absolute;
   top: 43px;
@@ -68,13 +68,13 @@ body {
   padding: 8px 12px;
   background: #4d525b;
   z-index: 999; }
-  .form.form--display {
+  .add-form.add-form--display {
     display: block; }
 
-.form__input {
+.add-form__input {
   margin: 5px; }
 
-.form__add-card-btn {
+.add-form__add-card-btn {
   margin: auto;
   padding: 5px 8px;
   border: 1px solid white;
@@ -88,7 +88,7 @@ body {
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   transition: all 0.5s; }
-  .form__add-card-btn:hover {
+  .add-form__add-card-btn:hover {
     background: white;
     color: #4d525b; }
 
@@ -103,8 +103,6 @@ body {
   width: 33%;
   background: white;
   overflow: hidden; }
-  .column + .column {
-    border-left: 1px dotted #4d525b; }
   .column .column__heading {
     text-transform: uppercase;
     text-align: center;
@@ -117,10 +115,28 @@ body {
     border: 1px dashed #4d525b; }
 
 .card {
+  display: flex;
   margin: 0 5px 5px 5px;
   padding: 2px 5px;
   font-size: 14px;
   position: relative; }
+
+.card__delete {
+  position: absolute;
+  text-transform: uppercase;
+  cursor: pointer;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s; }
+  .card__delete:hover {
+    font-weight: 900; }
+
+.card__text {
+  width: 100%;
+  margin: 5px;
+  font-size: 10px; }
+  .card__text h2, .card__text p {
+    margin: 2px; }
 
 .card--low {
   background: rgba(0, 255, 0, 0.2);
@@ -140,16 +156,3 @@ body {
 
 .card--opacity {
   opacity: 0.4; }
-
-.floatRight {
-  float: right; }
-
-.card__delete {
-  position: absolute;
-  text-transform: uppercase;
-  cursor: pointer;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  transition: all 0.5s; }
-  .card__delete:hover {
-    font-weight: 900; }

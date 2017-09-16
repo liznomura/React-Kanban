@@ -38,10 +38,10 @@ class NewCardForm extends PureComponent {
 
   render() {
     return (
-      <div id="form" className="form">
+      <div id="add-form" className="add-form">
         <form onSubmit={this.handleSubmit.bind(this)}>
           <input
-            className="form__input"
+            className="add-form__input"
             type="text"
             name="title"
             placeholder="Title"
@@ -49,7 +49,7 @@ class NewCardForm extends PureComponent {
             value={this.state.title}
           />
           <select
-            className="form__select"
+            className="add-form__select"
             name="priority"
             onChange={this.handleChange.bind(this)}
             value={this.state.priority}
@@ -60,7 +60,7 @@ class NewCardForm extends PureComponent {
             <option value="blocker">Blocker</option>
           </select>
           <input
-            className="form__input"
+            className="add-form__input"
             type="text"
             name="createdBy"
             placeholder="Created By"
@@ -68,14 +68,14 @@ class NewCardForm extends PureComponent {
             value={this.state.createdBy}
           />
           <input
-            className="form__input"
+            className="add-form__input"
             type="text"
             name="assignedTo"
             placeholder="Assigned To"
             onChange={this.handleChange.bind(this)}
             value={this.state.assignedTo}
           />
-          <button type="submit" className="form__add-card-btn" onClick={this.props.visibilityToggle }>Add Task</button>
+          <button type="submit" className="add-form__add-card-btn" onClick={this.props.visibilityToggle }>Add Task</button>
         </form>
       </div>
     )

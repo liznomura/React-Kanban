@@ -84,7 +84,7 @@ body {
   }
 }
 
-.form {
+.add-form {
   display: none;
   position: absolute;
   top: 43px;
@@ -93,16 +93,16 @@ body {
   background: $nav;
   z-index: 999;
 
-  &.form--display {
+  &.add-form--display {
     display: block;
   }
 }
 
-.form__input {
+.add-form__input {
     margin: 5px;
 }
 
-.form__add-card-btn {
+.add-form__add-card-btn {
   margin: auto;
   padding: 5px 8px;
   border: 1px solid white;
@@ -129,10 +129,6 @@ body {
   background: white;
   overflow: hidden;
 
-  & + .column {
-    border-left: 1px dotted $nav;
-  }
-
   .column__heading {
     text-transform: uppercase;
     text-align: center;
@@ -151,10 +147,32 @@ body {
 }
 
 .card {
+  display: flex;
   margin: 0 5px 5px 5px;
   padding: 2px 5px;
   font-size: 14px;
   position: relative;
+}
+
+.card__delete {
+  position: absolute;
+  text-transform: uppercase;
+  cursor: pointer;
+  @include trans;
+
+  &:hover {
+    font-weight: 900;
+  }
+}
+
+.card__text {
+  width: 100%;
+  margin: 5px;
+  font-size: 10px;
+
+  h2, p {
+    margin: 2px;
+  }
 }
 
 .card--low {
@@ -179,19 +197,4 @@ body {
 
 .card--opacity {
   opacity: 0.4;
-}
-
-.floatRight {
-  float: right;
-}
-
-.card__delete {
-  position: absolute;
-  text-transform: uppercase;
-  cursor: pointer;
-  @include trans;
-
-  &:hover {
-    font-weight: 900;
-  }
 }
