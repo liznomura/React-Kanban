@@ -7,7 +7,6 @@ class Card extends PureComponent {
 
   toggleEditing(e) {
     const id = parseInt(this.props.id, 10);
-    console.log(id)
     this.props.toggleEdit(id)
   }
 
@@ -31,16 +30,18 @@ class Card extends PureComponent {
         &times;
         </div>
           {isEditing === cardId ? (
-            <EditForm
-            cardId={cardId}
-            title={this.props.title}
-            priority={this.props.priority}
-            assignedBy={this.props.createdBy}
-            assignedTo={this.props.assignedTo}
-            status={this.props.status}
-            />
+            <div className="card__content">
+              <EditForm
+              cardId={cardId}
+              title={this.props.title}
+              priority={this.props.priority}
+              assignedBy={this.props.createdBy}
+              assignedTo={this.props.assignedTo}
+              status={this.props.status}
+              />
+            </div>
             ) : (
-            <div className="card__text">
+            <div className="card__content">
               <h2>{this.props.title}</h2>
               <p>Priority: {this.props.priority}</p>
               <span>Assigned by: {this.props.createdBy}</span>

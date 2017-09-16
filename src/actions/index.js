@@ -43,7 +43,6 @@ export const delCard = id => {
 }
 
 export const editCard = card => {
-  console.log('action', card)
   return {
     type: EDIT_CARD,
     card: { ...card }
@@ -66,7 +65,6 @@ export const setDrag = current => {
 }
 
 export const toggleEdit = current => {
-  console.log(current)
   return {
     type: TOGGLE_EDIT,
     current

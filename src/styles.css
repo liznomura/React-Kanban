@@ -131,11 +131,11 @@ body {
   .card__delete:hover {
     font-weight: 900; }
 
-.card__text {
+.card__content {
   width: 100%;
   margin: 5px;
   font-size: 10px; }
-  .card__text h2, .card__text p {
+  .card__content h2, .card__content p {
     margin: 2px; }
 
 .card--low {
