@@ -6,16 +6,18 @@ import EditForm from '../containers/EditForm'
 class Card extends PureComponent {
 
   toggleEditing(e) {
-    this.props.toggleEdit()
+    const id = parseInt(this.props.id, 10);
+    console.log(id)
+    this.props.toggleEdit(id)
   }
 
   render() {
     const classes = `card card--${this.props.priority} ${this.props.dragging ? 'card--opacity' : ''}`;
     const isEditing = this.props.editing;
+    const cardId = parseInt(this.props.id, 10);
 
     return (
       <div
-        id={this.props.id}
         className={classes}
         draggable="true"
         onDragStart={this.props.onDragStart}
@@ -27,9 +29,9 @@ class Card extends PureComponent {
         >
         &times;
         </div>
-          {isEditing ? (
+          {isEditing === cardId ? (
             <EditForm
-            cardId={this.props.id}
+            cardId={cardId}
             title={this.props.title}
             priority={this.props.priority}
             assignedBy={this.props.createdBy}
@@ -64,8 +66,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(setDrag(current))
     },
 
-    toggleEdit: () => {
-      dispatch(toggleEdit())
+    toggleEdit: (current) => {
+      dispatch(toggleEdit(current))
     }
   }
 }

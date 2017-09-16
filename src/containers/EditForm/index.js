@@ -29,7 +29,7 @@ class EditForm extends PureComponent {
   handleSubmit(e) {
     e.preventDefault()
     this.props.editCard(this.state)
-    this.props.toggleEdit()
+    this.props.toggleEdit(false)
   }
 
   render() {

@@ -5,7 +5,7 @@ const initialState = {
   dragging: false,
   columns: ['in queue', 'in progress', 'done'],
   cards: [{
-    id:1,
+    id:0,
 status:"in queue",
 title:"test",
 priority:"low",
@@ -23,7 +23,6 @@ const kanbanReducer = (state = initialState, action) => {
       return Object.assign({}, state, { cards: [ ...state.cards, action.card ] })
 
     case EDIT_CARD:
-    console.log('reducer', action.card)
       return Object.assign({}, state,
         {
           cards: state.cards
@@ -65,7 +64,7 @@ const kanbanReducer = (state = initialState, action) => {
         return Object.assign({}, state, { dragging: action.current })
 
       case TOGGLE_EDIT:
-        return Object.assign({}, state, { editing: !state.editing })
+        return Object.assign({}, state, { editing: action.current })
 
     default:
       return state

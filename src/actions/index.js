@@ -65,8 +65,10 @@ export const setDrag = current => {
   }
 }
 
-export const toggleEdit = () => {
+export const toggleEdit = current => {
+  console.log(current)
   return {
-    type: TOGGLE_EDIT
+    type: TOGGLE_EDIT,
+    current
   }
 }
