@@ -1,17 +1,19 @@
-import { LOAD_CARDS, ADD_CARD, EDIT_CARD, DEL_CARD, MOVE_CARD, SET_DRAG, TOGGLE_EDIT } from '../actions'
+import { LOAD_CARDS, ADD_CARD, EDIT_CARD, DEL_CARD, MOVE_CARD, SET_DRAG, TOGGLE_EDIT, ADD_COLUMN, EDIT_COLUMN_TITLE } from '../actions'
 
 const initialState = {
   editing: false,
   dragging: false,
   columns: ['in queue', 'in progress', 'done'],
-  cards: [{
-    id:0,
-status:"in queue",
-title:"test",
-priority:"low",
-createdBy:"test",
-assignedTo:"test"
-  }]
+  cards: [
+    {
+      id:0,
+      status:"in queue",
+      title:"test",
+      priority:"low",
+      createdBy:"test",
+      assignedTo:"test"
+    }
+  ]
 }
 
 const kanbanReducer = (state = initialState, action) => {
@@ -65,6 +67,14 @@ const kanbanReducer = (state = initialState, action) => {
 
       case TOGGLE_EDIT:
         return Object.assign({}, state, { editing: action.current })
+
+      case ADD_COLUMN:
+        return Object.assign({}, state, { columns: [...state.columns, action.colTitle] })
+
+      case EDIT_COLUMN_TITLE:
+        let copyArr = state.columns.slice();
+        copyArr[action.colId] = action.newTitle;
+        return Object.assign({}, state, { columns: copyArr })
 
     default:
       return state

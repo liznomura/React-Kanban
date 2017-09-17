@@ -1,30 +1,32 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import Card from '../../components/card.js'
-import { moveCard, setDrag } from '../../actions'
+import { moveCard, setDrag, editColumnTitle } from '../../actions'
 
 class Columns extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      isOver: false
+      isOver: false,
+      isEditingTitle: false,
+      title: this.props.columnType
     }
   }
 
-  handleMouseEnter(e) {
+  handleMouseEnter () {
     if(this.props.dragging !== false) {
       this.setState({ isOver: true })
     }
   }
 
-  handleMouseLeave(e) {
+  handleMouseLeave () {
     if(this.props.dragging !== false) {
       this.setState({ isOver: false })
     }
   }
 
-  handleMouseUp(e) {
+  handleMouseUp (e) {
     if(this.props.dragging !== false) {
       this.props.moveCard(e.target.dataset.name)
       this.props.setDrag(false)
@@ -32,17 +34,55 @@ class Columns extends PureComponent {
     }
   }
 
-  handleMouseDown(e) {
+  handleMouseDown (e) {
     e.preventDefault()
     const id = parseInt(e.target.id, 10);
     this.props.setDrag(id)
+  }
+
+  onTitleClick () {
+    this.setState({
+      isEditingTitle: true
+    })
+  }
+
+  onTitleChange (e) {
+    this.setState({
+      title: e.target.value
+    })
+  }
+
+  onInputBlur () {
+    const id = parseInt(this.props.colId, 10);
+
+    this.setState({
+      isEditingTitle: false
+    })
+    this.props.editColumnTitle(id, this.state.title)
   }
 
   render() {
     const classes = `column ${this.state.isOver ? 'column--over' : ''}`
     return (
       <div className={classes}>
-        <div className="column__heading">{this.props.columnType}</div>
+        <div className="column__heading">
+          {
+            this.state.isEditingTitle
+              ? (
+                <div className="heading__input">
+                  <input type="text" value={this.state.title} onChange={this.onTitleChange.bind(this)} onBlur={this.onInputBlur.bind(this)}/>
+                </div>
+              )
+              : (
+                <div
+                  className="heading__text"
+                  onClick={this.onTitleClick.bind(this)}
+                >
+                  {this.state.title}
+                </div>
+              )
+          }
+        </div>
         <div
           className="column__cards"
           data-name={this.props.columnType}
@@ -85,6 +125,10 @@ const mapDispatchToProps = dispatch => {
 
     setDrag: current => {
       dispatch(setDrag(current))
+    },
+
+    editColumnTitle: (id, newTitle) => {
+      dispatch(editColumnTitle(id, newTitle))
     }
   }
 }

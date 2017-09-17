@@ -5,8 +5,7 @@ import Columns from '../Columns'
 
 class KanbanBoard extends PureComponent {
 
-  handleDelete(e) {
-    const id = parseInt(e.target.dataset.id, 10);
+  handleDelete(id) {
     this.props.deleteCard(id)
   }
 
@@ -22,6 +21,7 @@ class KanbanBoard extends PureComponent {
             .map((column, i) =>
               <Columns
                 key={i}
+                colId={i}
                 columnType={column}
                 handleDelete={this.handleDelete.bind(this)}
               />

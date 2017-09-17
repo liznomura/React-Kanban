@@ -6,9 +6,8 @@ export const LOAD_CARDS = 'LOAD_CARDS'
 export const MOVE_CARD = 'MOVE_CARD'
 export const SET_DRAG = 'SET_DRAG'
 export const TOGGLE_EDIT = 'TOGGLE_EDIT'
-
-// note for later:
-//   add new columns by adding title to state.columns
+export const ADD_COLUMN = 'ADD_COLUMN'
+export const EDIT_COLUMN_TITLE = 'EDIT_COLUMN_TITLE'
 
 //action creators
 let nextCardId = 0
@@ -68,5 +67,20 @@ export const toggleEdit = current => {
   return {
     type: TOGGLE_EDIT,
     current
+  }
+}
+
+export const addColumn = colTitle => {
+  return {
+    type: ADD_COLUMN,
+    colTitle
+  }
+}
+
+export const editColumnTitle = (colId, newTitle) => {
+  return {
+    type: EDIT_COLUMN_TITLE,
+    colId,
+    newTitle
   }
 }

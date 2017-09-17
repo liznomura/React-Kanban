@@ -75,7 +75,7 @@ class EditForm extends PureComponent {
             type="submit"
             className="edit-form__edit-card-btn"
           >
-            Edit Task
+            Save Task
           </button>
         </form>
       </div>
