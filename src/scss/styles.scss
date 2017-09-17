@@ -136,6 +136,7 @@ body {
     text-align: center;
     margin: 10px;
     background: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
   }
 
   .column__cards {
@@ -240,4 +241,19 @@ body {
 
 .card--opacity {
   opacity: 0.4;
+}
+
+.edit-form {
+  padding-top: 10px;
+  width: 100%;
+}
+
+.edit-form__input,
+.edit-form__select {
+  display: block;
+  margin-bottom: 3px;
+}
+
+.edit-form__input {
+  width: 100%;
 }

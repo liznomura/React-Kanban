@@ -19,10 +19,10 @@ class EditForm extends PureComponent {
   handleChange(e) {
     const target = e.target;
     const value = target.value;
-    const name = target.name;
+    const id = target.id;
 
     this.setState({
-      [name]: value
+      [id]: value
     })
   }
 
@@ -36,17 +36,19 @@ class EditForm extends PureComponent {
     return (
       <div className="edit-form">
         <form onSubmit={this.handleSubmit.bind(this)}>
+          <label htmlFor="title">Title: </label>
           <input
             className="edit-form__input"
             type="text"
-            name="title"
+            id="title"
             placeholder="Title"
             onChange={this.handleChange.bind(this)}
             value={this.state.title}
           />
+          <label htmlFor="priority">Priority: </label>
           <select
             className="edit-form__select"
-            name="priority"
+            id="priority"
             onChange={this.handleChange.bind(this)}
             value={this.state.priority}
           >
@@ -55,18 +57,20 @@ class EditForm extends PureComponent {
             <option value="high">High</option>
             <option value="blocker">Blocker</option>
           </select>
+          <label htmlFor="createdBy">Created By: </label>
           <input
             className="edit-form__input"
             type="text"
-            name="createdBy"
+            id="createdBy"
             placeholder="Created By"
             onChange={this.handleChange.bind(this)}
             value={this.state.createdBy}
           />
+          <label htmlFor="assignedTo">Assigned To: </label>
           <input
             className="edit-form__input"
             type="text"
-            name="assignedTo"
+            id="assignedTo"
             placeholder="Assigned To"
             onChange={this.handleChange.bind(this)}
             value={this.state.assignedTo}
