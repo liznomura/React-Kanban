@@ -131,7 +131,8 @@ body {
 .card__edit {
   height: 15px;
   display: inline-flex;
-  align-items: center; }
+  align-items: center;
+  cursor: pointer; }
 
 .card__delete {
   position: relative;
@@ -147,7 +148,8 @@ body {
     width: 100%;
     height: 3px;
     border-radius: 2px;
-    background: #666666; }
+    background: #666666;
+    cursor: pointer; }
   .card__delete:before {
     transform: translate(-50%, -50%) rotate(45deg); }
   .card__delete:after {

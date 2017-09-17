@@ -53,12 +53,10 @@ class Columns extends PureComponent {
   }
 
   onInputBlur () {
-    const id = parseInt(this.props.colId, 10);
-
     this.setState({
       isEditingTitle: false
     })
-    this.props.editColumnTitle(id, this.state.title)
+    this.props.editColumnTitle(this.props.colId, this.state.title)
   }
 
   render() {
@@ -93,7 +91,7 @@ class Columns extends PureComponent {
           {
             this.props.cards
             .filter(card =>
-              card.status === this.props.columnType.toLowerCase()
+              card.status === this.props.columnType
             )
             .map(card =>
               <Card

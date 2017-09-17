@@ -166,6 +166,7 @@ body {
   height: 15px;
   display: inline-flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .card__delete {
@@ -185,6 +186,7 @@ body {
     height: 3px;
     border-radius: 2px;
     background: lighten(black, 40%);
+    cursor: pointer;
   }
 
   &:before {
