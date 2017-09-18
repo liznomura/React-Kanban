@@ -172,6 +172,9 @@ body {
   justify-content: space-between;
   width: 100%; }
 
+.card__assigned-to {
+  font-weight: 900; }
+
 .card--low {
   background: rgba(0, 255, 0, 0.2);
   border: 1px solid rgba(0, 153, 0, 0.2); }

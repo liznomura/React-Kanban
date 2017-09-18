@@ -219,6 +219,10 @@ body {
   width: 100%;
 }
 
+.card__assigned-to {
+  font-weight: 900;
+}
+
 .card--low {
   background: $low;
   border: 1px solid darken($low, 20%);
