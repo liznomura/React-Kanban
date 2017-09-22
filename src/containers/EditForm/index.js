@@ -1,56 +1,54 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { addCard } from '../../actions';
+import { editCard, toggleEdit } from '../../actions';
 
-class NewCardForm extends PureComponent {
+class EditForm extends PureComponent {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
-      title: '',
-      priority: 'low',
-      createdBy: '',
-      assignedTo: ''
+      id: this.props.cardId,
+      title: this.props.title,
+      priority: this.props.priority,
+      createdBy: this.props.assignedBy,
+      assignedTo: this.props.assignedTo,
+      status: this.props.status
     }
   }
 
   handleChange(e) {
     const target = e.target;
     const value = target.value;
-    const name = target.name;
+    const id = target.id;
 
     this.setState({
-      [name]: value
+      [id]: value
     })
   }
 
   handleSubmit(e) {
     e.preventDefault()
-    this.props.addCard(this.state)
-
-    this.setState({
-      title: '',
-      priority: 'low',
-      createdBy: '',
-      assignedTo: ''
-    })
+    this.props.editCard(this.state)
+    this.props.toggleEdit(false)
   }
 
   render() {
     return (
-      <div id="add-form" className="add-form">
+      <div className="edit-form">
         <form onSubmit={this.handleSubmit.bind(this)}>
+          <label htmlFor="title">Title: </label>
           <input
-            className="add-form__input"
+            className="edit-form__input"
             type="text"
-            name="title"
+            id="title"
             placeholder="Title"
             onChange={this.handleChange.bind(this)}
             value={this.state.title}
           />
+          <label htmlFor="priority">Priority: </label>
           <select
-            className="add-form__select"
-            name="priority"
+            className="edit-form__select"
+            id="priority"
             onChange={this.handleChange.bind(this)}
             value={this.state.priority}
           >
@@ -59,32 +57,33 @@ class NewCardForm extends PureComponent {
             <option value="high">High</option>
             <option value="blocker">Blocker</option>
           </select>
+          <label htmlFor="createdBy">Created By: </label>
           <input
-            className="add-form__input"
+            className="edit-form__input"
             type="text"
-            name="createdBy"
+            id="createdBy"
             placeholder="Created By"
             onChange={this.handleChange.bind(this)}
             value={this.state.createdBy}
           />
+          <label htmlFor="assignedTo">Assigned To: </label>
           <input
-            className="add-form__input"
+            className="edit-form__input"
             type="text"
-            name="assignedTo"
+            id="assignedTo"
             placeholder="Assigned To"
             onChange={this.handleChange.bind(this)}
             value={this.state.assignedTo}
           />
           <button
             type="submit"
-            className="add-form__add-card-btn"
-            onClick={this.props.visibilityToggle }
+            className="edit-form__edit-card-btn"
           >
-            Add Task
+            Save Task
           </button>
         </form>
       </div>
-    )
+      )
   }
 }
 
@@ -92,10 +91,14 @@ const mapStateToProps = state => ({})
 
 const mapDispatchToProps = dispatch => {
   return {
-    addCard: card => {
-      dispatch(addCard(card));
+    toggleEdit: () => {
+      dispatch(toggleEdit());
+    },
+
+    editCard: card => {
+      dispatch(editCard(card));
     }
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewCardForm)
+export default connect(mapStateToProps, mapDispatchToProps)(EditForm);

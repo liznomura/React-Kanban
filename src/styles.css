@@ -9,6 +9,8 @@ COLORS
 
 html,
 body {
+  height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
   font-family: "Source Sans Pro", sans-serif;
@@ -33,7 +35,8 @@ body {
   background: #4d525b;
   color: white;
   text-transform: uppercase; }
-  .nav .newTask {
+  .nav .nav__new-task-btn,
+  .nav .nav__new-column-btn {
     padding: 5px;
     border: 1px solid white;
     -webkit-transition: all 0.5s;
@@ -45,10 +48,10 @@ body {
     text-decoration: none;
     letter-spacing: 0.2em;
     cursor: pointer; }
-    .nav .newTask:hover {
-      background: white; }
-      .nav .newTask:hover:hover a {
-        color: #4d525b; }
+    .nav .nav__new-task-btn:hover,
+    .nav .nav__new-column-btn:hover {
+      background: white;
+      color: #4d525b; }
   .nav a {
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
@@ -60,7 +63,7 @@ body {
     letter-spacing: 0.2em;
     cursor: pointer; }
 
-.form {
+.add-form {
   display: none;
   position: absolute;
   top: 43px;
@@ -68,13 +71,13 @@ body {
   padding: 8px 12px;
   background: #4d525b;
   z-index: 999; }
-  .form.form--display {
+  .add-form.add-form--display {
     display: block; }
 
-.form__input {
+.add-form__input {
   margin: 5px; }
 
-.form__add-card-btn {
+.add-form__add-card-btn {
   margin: auto;
   padding: 5px 8px;
   border: 1px solid white;
@@ -88,11 +91,11 @@ body {
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   transition: all 0.5s; }
-  .form__add-card-btn:hover {
+  .add-form__add-card-btn:hover {
     background: white;
     color: #4d525b; }
 
-.kanbanBoard {
+.kanban-board {
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -103,64 +106,103 @@ body {
   width: 33%;
   background: white;
   overflow: hidden; }
-  .column .over {
+  .column .column__heading {
+    text-transform: uppercase;
+    text-align: center;
+    margin: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    cursor: pointer; }
+  .column .column__cards {
+    height: 92%;
+    overflow: auto; }
+  .column.column--over {
     border: 1px dashed #4d525b; }
 
-.colHeading {
-  text-transform: uppercase;
-  text-align: center;
-  margin: 10px;
-  background: rgba(255, 255, 255, 0.8); }
-
-.cardContainer {
-  height: 92%;
-  overflow: auto; }
-
-.inProgress {
-  border-left: 1px solid #4d525b;
-  border-right: 1px solid #4d525b; }
-
-.low,
-.medium,
-.high,
-.blocker {
+.card {
+  display: flex;
   margin: 0 5px 5px 5px;
   padding: 2px 5px;
   font-size: 14px;
   position: relative; }
 
-.low {
-  clear: both;
+.card__controls {
+  position: absolute;
+  top: 2px;
+  right: 5px; }
+
+.card__edit {
+  height: 15px;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer; }
+
+.card__delete {
+  position: relative;
+  display: inline-block;
+  width: 15px;
+  height: 15px; }
+  .card__delete:before, .card__delete:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: 3px;
+    border-radius: 2px;
+    background: #666666;
+    cursor: pointer; }
+  .card__delete:before {
+    transform: translate(-50%, -50%) rotate(45deg); }
+  .card__delete:after {
+    transform: translate(-50%, -50%) rotate(-45deg); }
+
+.card__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  margin: 5px;
+  font-size: 10px; }
+  .card__content h2 {
+    margin: 0; }
+
+.card__assignments {
+  display: flex;
+  justify-content: space-between;
+  width: 100%; }
+
+.card__assigned-to {
+  font-weight: 900; }
+
+.card--low {
   background: rgba(0, 255, 0, 0.2);
   border: 1px solid rgba(0, 153, 0, 0.2); }
 
-.medium {
-  clear: both;
+.card--medium {
   background: rgba(255, 255, 0, 0.2);
   border: 1px solid rgba(153, 153, 0, 0.2); }
 
-.high {
-  clear: both;
+.card--high {
   background: rgba(255, 0, 0, 0.2);
   border: 1px solid rgba(153, 0, 0, 0.2); }
 
-.blocker {
-  clear: both;
+.card--blocker {
   background: rgba(51, 153, 255, 0.2);
   border: 1px solid rgba(0, 102, 204, 0.2); }
 
-.floatRight {
-  float: right; }
+.card--opacity {
+  opacity: 0.4; }
 
-.delete {
-  position: absolute;
-  text-transform: uppercase;
-  cursor: pointer;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  transition: all 0.5s; }
-  .delete:hover {
-    font-weight: 900; }
+.edit-form {
+  padding-top: 10px;
+  width: 100%; }
 
-.over {
-  border: 1px dotted grey; }
+.edit-form__input,
+.edit-form__select {
+  display: block;
+  margin-bottom: 3px; }
+
+.edit-form__input {
+  width: 100%; }

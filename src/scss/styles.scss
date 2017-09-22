@@ -36,6 +36,8 @@ $done: rgba(128, 128, 128, 0.2); // grey
 
 html,
 body {
+  height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
   font-family: $f;
@@ -63,7 +65,8 @@ body {
   color: white;
   text-transform: uppercase;
 
-  .newTask {
+  .nav__new-task-btn,
+  .nav__new-column-btn {
     padding: 5px;
     border: 1px solid white;
     @include trans;
@@ -71,10 +74,7 @@ body {
 
     &:hover {
       background: white;
-
-      &:hover a {
-        color: $nav;
-      }
+      color: $nav;
     }
   }
 
@@ -84,7 +84,7 @@ body {
   }
 }
 
-.form {
+.add-form {
   display: none;
   position: absolute;
   top: 43px;
@@ -93,16 +93,16 @@ body {
   background: $nav;
   z-index: 999;
 
-  &.form--display {
+  &.add-form--display {
     display: block;
   }
 }
 
-.form__input {
+.add-form__input {
     margin: 5px;
 }
 
-.form__add-card-btn {
+.add-form__add-card-btn {
   margin: auto;
   padding: 5px 8px;
   border: 1px solid white;
@@ -116,7 +116,7 @@ body {
   }
 }
 
-.kanbanBoard {
+.kanban-board {
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -129,77 +129,133 @@ body {
   background: white;
   overflow: hidden;
 
-  & .over {
+  .column__heading {
+    text-transform: uppercase;
+    text-align: center;
+    margin: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+  }
+
+  .column__cards {
+  height: 92%;
+  overflow: auto;
+  }
+
+  &.column--over {
     border: 1px dashed $nav;
   }
 }
 
-.colHeading {
-  text-transform: uppercase;
-  text-align: center;
-  margin: 10px;
-  background: rgba(255, 255, 255, 0.8);
-}
-
-.cardContainer {
-  height: 92%;
-  overflow: auto;
-}
-
-.inProgress {
-  border-left: 1px solid $nav;
-  border-right: 1px solid $nav;
-}
-
-.low,
-.medium,
-.high,
-.blocker {
+.card {
+  display: flex;
   margin: 0 5px 5px 5px;
   padding: 2px 5px;
   font-size: 14px;
   position: relative;
 }
 
-.low {
-  clear: both;
+.card__controls {
+  position: absolute;
+  top: 2px;
+  right: 5px;
+}
+
+.card__edit {
+  height: 15px;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.card__delete {
+  position: relative;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: 3px;
+    border-radius: 2px;
+    background: lighten(black, 40%);
+    cursor: pointer;
+  }
+
+  &:before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &:after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}
+
+.card__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  margin: 5px;
+  font-size: 10px;
+
+  h2 {
+    margin: 0;
+  }
+}
+
+.card__assignments {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.card__assigned-to {
+  font-weight: 900;
+}
+
+.card--low {
   background: $low;
   border: 1px solid darken($low, 20%);
 }
 
-.medium {
-  clear: both;
+.card--medium {
   background: $medium;
   border: 1px solid darken($medium, 20%);
 }
 
-.high {
-  clear: both;
+.card--high {
   background: $high;
   border: 1px solid darken($high, 20%);
 }
 
-.blocker {
-  clear: both;
+.card--blocker {
   background: $blocker;
   border: 1px solid darken($blocker, 20%);
 }
 
-.floatRight {
-  float: right;
+.card--opacity {
+  opacity: 0.4;
 }
 
-.delete {
-  position: absolute;
-  text-transform: uppercase;
-  cursor: pointer;
-  @include trans;
-
-  &:hover {
-    font-weight: 900;
-  }
+.edit-form {
+  padding-top: 10px;
+  width: 100%;
 }
 
-.over {
-  border: 1px dotted grey;
+.edit-form__input,
+.edit-form__select {
+  display: block;
+  margin-bottom: 3px;
+}
+
+.edit-form__input {
+  width: 100%;
 }

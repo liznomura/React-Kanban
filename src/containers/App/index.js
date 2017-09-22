@@ -4,8 +4,8 @@ import NewCardForm from '../NewCardForm';
 import KanbanBoard from '../KanbanBoard';
 
 function visibilityToggle() {
-  let form = document.getElementById('form');
-  form.classList.toggle('form--display');
+  let form = document.getElementById('add-form');
+  form.classList.toggle('add-form--display');
 }
 
 const App = () => (
