@@ -35,7 +35,8 @@ body {
   background: #4d525b;
   color: white;
   text-transform: uppercase; }
-  .nav .nav__new-task-btn {
+  .nav .nav__new-task-btn,
+  .nav .nav__new-column-btn {
     padding: 5px;
     border: 1px solid white;
     -webkit-transition: all 0.5s;
@@ -47,10 +48,10 @@ body {
     text-decoration: none;
     letter-spacing: 0.2em;
     cursor: pointer; }
-    .nav .nav__new-task-btn:hover {
-      background: white; }
-      .nav .nav__new-task-btn:hover:hover a {
-        color: #4d525b; }
+    .nav .nav__new-task-btn:hover,
+    .nav .nav__new-column-btn:hover {
+      background: white;
+      color: #4d525b; }
   .nav a {
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;

@@ -8,10 +8,10 @@ const initialState = {
     {
       id:0,
       status:"in queue",
-      title:"test",
-      priority:"low",
-      createdBy:"test",
-      assignedTo:"test"
+      title:"Do your work!",
+      priority:"high",
+      createdBy:"me",
+      assignedTo:"you"
     }
   ]
 }

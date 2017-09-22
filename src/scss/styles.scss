@@ -65,7 +65,8 @@ body {
   color: white;
   text-transform: uppercase;
 
-  .nav__new-task-btn {
+  .nav__new-task-btn,
+  .nav__new-column-btn {
     padding: 5px;
     border: 1px solid white;
     @include trans;
@@ -73,10 +74,7 @@ body {
 
     &:hover {
       background: white;
-
-      &:hover a {
-        color: $nav;
-      }
+      color: $nav;
     }
   }
 
