@@ -2,6 +2,15 @@
 /*
 COLORS
 */
+/*
+KANBAN BOARD
+*/
+/*
+EDIT VARIABLES
+*/
+/*
+DELETE VARIABLES
+*/
 *,
 *:before,
 *:after {
@@ -110,7 +119,7 @@ body {
     text-transform: uppercase;
     text-align: center;
     margin: 10px;
-    background: rgba(255, 255, 255, 0.8);
+    background: transparent;
     cursor: pointer; }
   .column .column__cards {
     height: 92%;
@@ -126,19 +135,65 @@ body {
   position: relative; }
 
 .card__controls {
+  display: flex;
   position: absolute;
   top: 2px;
   right: 5px; }
 
+/*
+EDIT
+*/
 .card__edit {
-  height: 15px;
-  display: inline-flex;
+  display: flex;
+  justify-content: center;
   align-items: center;
   cursor: pointer; }
 
+.edit {
+  width: 20px;
+  height: 20px;
+  background: transparent; }
+
+.edit__wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%; }
+
+.pencil {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 4px;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  background: #666666; }
+  .pencil:before, .pencil:after {
+    content: '';
+    display: block;
+    position: absolute; }
+  .pencil:before {
+    top: 0;
+    right: 100%;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 2px;
+    border-color: transparent #666666 transparent transparent; }
+  .pencil:after {
+    top: 0;
+    left: 100%;
+    height: 4px;
+    width: 2px;
+    transform: translateX(1px);
+    background: #666666; }
+
+/*
+DELETE
+*/
 .card__delete {
   position: relative;
   display: inline-block;
+  margin-top: 2px;
   width: 15px;
   height: 15px; }
   .card__delete:before, .card__delete:after {

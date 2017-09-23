@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { setDrag, toggleEdit } from '../actions'
 import EditForm from '../containers/EditForm'
+import Edit from './edit'
 
 class Card extends PureComponent {
 
@@ -26,7 +27,7 @@ class Card extends PureComponent {
           <div
             className="card__edit"
             onClick={this.toggleEditing.bind(this)}
-          >edit</div>
+          ><Edit /></div>
           <div
             className="card__delete"
             onClick={() => this.props.handleDelete(this.props.id)}
