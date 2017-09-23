@@ -19,7 +19,7 @@ $controls: lighten(black, 40%);
 /*
 KANBAN BOARD
 */
-$kanban-board-height: 500px;
+$kanban-board-height: 600px;
 
 /*
 EDIT VARIABLES
@@ -45,26 +45,16 @@ $delete-height: 15px * $delete-scale;
 $delete-thickness: 3px * $delete-scale;
 $delete-end-roundness: 2px * $delete-scale;
 
-
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-
 @mixin trans {
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   transition: all 0.5s;
 }
 
-@mixin whiteLinkText {
-  background: transparent;
-  color: white;
-  text-transform: uppercase;
-  text-decoration: none;
-  letter-spacing: 0.2em;
-  cursor: pointer;
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
 }
 
 html,
@@ -89,31 +79,29 @@ body {
 }
 
 .nav {
-  width: 100%;
-  padding: 8px 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: $nav;
+  width: 100%;
+  padding: 8px 10px;
   color: white;
   text-transform: uppercase;
+}
 
-  .nav__new-task-btn,
-  .nav__new-column-btn {
-    padding: 5px;
-    border: 1px solid white;
-    @include trans;
-    @include whiteLinkText;
+.new-task-btn,
+.new-column-btn {
+  margin: 2px;
+  background: transparent;
+  color: white;
+  padding: 5px;
+  border: 1px solid white;
+  border-radius: 4px;
+  @include trans;
 
-    &:hover {
-      background: white;
-      color: $nav;
-    }
-  }
-
-  & a {
-    @include trans;
-    @include whiteLinkText;
+  &:hover {
+    background: white;
+    color: $nav;
   }
 }
 
@@ -140,7 +128,6 @@ body {
   padding: 5px 8px;
   border: 1px solid white;
   float: right;
-  @include whiteLinkText;
   @include trans;
 
   &:hover {
@@ -347,4 +334,20 @@ DELETE
 
 .edit-form__input {
   width: 100%;
+}
+
+.edit-form__select {
+  cursor: pointer;
+}
+
+.edit-form__edit-card-btn {
+  background: white;
+  border: 1px solid;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    border-color: black;
+    color: black;
+  }
 }
