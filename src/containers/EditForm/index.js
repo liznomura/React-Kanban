@@ -28,6 +28,9 @@ class EditForm extends PureComponent {
 
   handleSubmit(e) {
     e.preventDefault()
+    if (Object.values(this.state).some(value => value === '')) {
+      return
+    }
     this.props.editCard(this.state)
     this.props.toggleEdit(false)
   }

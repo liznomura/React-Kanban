@@ -41,9 +41,11 @@ class Columns extends PureComponent {
   }
 
   onTitleClick () {
-    this.setState({
-      isEditingTitle: true
-    })
+    if (!this.state.isEditingTitle) {
+      this.setState({
+        isEditingTitle: true
+      })
+    }
   }
 
   onTitleChange (e) {
@@ -53,9 +55,14 @@ class Columns extends PureComponent {
   }
 
   onInputBlur () {
+    if (this.state.title === '') {
+      return
+    }
+
     this.setState({
       isEditingTitle: false
     })
+
     this.props.editColumnTitle(this.props.colId, this.state.title)
   }
 
@@ -68,13 +75,13 @@ class Columns extends PureComponent {
             this.state.isEditingTitle
               ? (
                 <div className="heading__input">
-                  <input type="text" value={this.state.title} onChange={this.onTitleChange.bind(this)} onBlur={this.onInputBlur.bind(this)}/>
+                  <input type="text" value={this.state.title} placeholder="Column Title"onChange={this.onTitleChange.bind(this)} onBlur={this.onInputBlur.bind(this)} autoFocus/>
                 </div>
               )
               : (
                 <div
                   className="heading__text"
-                  onClick={this.onTitleClick.bind(this)}
+                  onDoubleClick={this.onTitleClick.bind(this)}
                 >
                   {this.state.title}
                 </div>
