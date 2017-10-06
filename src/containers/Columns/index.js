@@ -15,20 +15,24 @@ class Columns extends PureComponent {
   }
 
   handleMouseEnter () {
-    if(this.props.dragging !== false) {
+    if (this.props.dragging !== false) {
       this.setState({ isOver: true })
     }
   }
 
   handleMouseLeave () {
-    if(this.props.dragging !== false) {
+    if (this.props.dragging !== false) {
       this.setState({ isOver: false })
     }
   }
 
   handleMouseUp (e) {
-    if(this.props.dragging !== false) {
-      this.props.moveCard(e.target.dataset.name)
+    if (this.props.dragging !== false) {
+
+      if (e.target.dataset.name) {
+        this.props.moveCard(e.target.dataset.name)
+      }
+
       this.props.setDrag(false)
       this.setState({ isOver: false })
     }
