@@ -97,7 +97,13 @@ class Columns extends PureComponent {
             this.state.isEditingTitle
               ? (
                 <div className="heading__input">
-                  <input type="text" value={this.state.title} placeholder="Column Title" onChange={this.onTitleChange.bind(this)} onBlur={this.onInputBlur.bind(this)} onKeyPress={this.onKeyPress.bind(this)} autoFocus/>
+                  <input
+                  type="text"
+                  value={this.state.title}
+                  placeholder="Column Title"
+                  onChange={this.onTitleChange.bind(this)}
+                  onBlur={this.onInputBlur.bind(this)}
+                  onKeyPress={this.onKeyPress.bind(this)} autoFocus/>
                 </div>
               )
               : (

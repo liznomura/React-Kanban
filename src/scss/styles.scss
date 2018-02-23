@@ -354,22 +354,22 @@ DELETE
 
 .card--low {
   background: $low;
-  border-top: 8px solid darken($low, 20%);
+  border-left: 8px solid darken($low, 20%);
 }
 
 .card--medium {
   background: $medium;
-  border-top: 8px solid darken($medium, 20%);
+  border-left: 8px solid darken($medium, 20%);
 }
 
 .card--high {
   background: $high;
-  border-top: 8px solid darken($high, 20%);
+  border-left: 8px solid darken($high, 20%);
 }
 
 .card--blocker {
   background: $blocker;
-  border-top: 8px solid darken($blocker, 20%);
+  border-left: 8px solid darken($blocker, 20%);
 }
 
 .card--opacity {

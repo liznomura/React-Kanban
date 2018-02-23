@@ -247,19 +247,19 @@ DELETE
 
 .card--low {
   background: rgba(0, 255, 0, 0.2);
-  border-top: 8px solid rgba(0, 153, 0, 0.2); }
+  border-left: 8px solid rgba(0, 153, 0, 0.2); }
 
 .card--medium {
   background: rgba(255, 255, 0, 0.2);
-  border-top: 8px solid rgba(153, 153, 0, 0.2); }
+  border-left: 8px solid rgba(153, 153, 0, 0.2); }
 
 .card--high {
   background: rgba(255, 0, 0, 0.2);
-  border-top: 8px solid rgba(153, 0, 0, 0.2); }
+  border-left: 8px solid rgba(153, 0, 0, 0.2); }
 
 .card--blocker {
   background: rgba(51, 153, 255, 0.2);
-  border-top: 8px solid rgba(0, 102, 204, 0.2); }
+  border-left: 8px solid rgba(0, 102, 204, 0.2); }
 
 .card--opacity {
   opacity: 0.4; }

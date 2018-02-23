@@ -11,6 +11,13 @@ class Card extends PureComponent {
     this.props.toggleEdit(id)
   }
 
+  onDoubleClick(e) {
+    const id = parseInt(this.props.id, 10);
+    if (this.props.editing === false) {
+      this.props.toggleEdit(id)
+    }
+  }
+
   render() {
     const classes = `card card--${this.props.priority} ${this.props.dragging ? 'card--opacity' : ''}`;
     const isEditing = this.props.editing;
@@ -22,6 +29,7 @@ class Card extends PureComponent {
         className={classes}
         draggable="true"
         onDragStart={this.props.onDragStart}
+        onDoubleClick={this.onDoubleClick.bind(this)}
       >
         <div className="card__controls">
           <div
