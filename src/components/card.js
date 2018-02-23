@@ -29,7 +29,7 @@ class Card extends PureComponent {
             onClick={this.toggleEditing.bind(this)}
           ><Edit /></div>
           <div
-            className="card__delete"
+            className="delete delete--card"
             onClick={() => this.props.handleDelete(this.props.id)}
           />
         </div>

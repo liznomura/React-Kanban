@@ -1,12 +1,16 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { delCard } from '../../actions'
+import { delCard, delColumn } from '../../actions'
 import Columns from '../Columns'
 
 class KanbanBoard extends PureComponent {
 
   handleDelete(id) {
     this.props.deleteCard(id)
+  }
+
+  handleColumnDelete(colId) {
+    this.props.delColumn(colId)
   }
 
   componentWillMount() {
@@ -24,6 +28,7 @@ class KanbanBoard extends PureComponent {
                 colId={i}
                 columnType={column}
                 handleDelete={this.handleDelete.bind(this)}
+                handleColumnDelete={this.handleColumnDelete.bind(this)}
               />
             )
         }
@@ -43,6 +48,9 @@ const mapDispatchToProps = dispatch => {
   return {
     deleteCard: id => {
       dispatch(delCard(id))
+    },
+    delColumn: colId => {
+      dispatch(delColumn(colId))
     }
   }
 }
