@@ -70,16 +70,34 @@ class Columns extends PureComponent {
     this.props.editColumnTitle(this.props.colId, this.state.title)
   }
 
+  onKeyPress (e) {
+    if (e.charCode === 13 && this.state.title !== '') {
+
+      this.setState({
+        isEditingTitle: false
+      })
+
+      this.props.editColumnTitle(this.props.colId, this.state.title)
+
+      return false
+    }
+  }
+
+  onDeleteClick () {
+    this.props.handleColumnDelete(this.props.colId)
+  }
+
   render() {
     const classes = `column ${this.state.isOver ? 'column--over' : ''}`
     return (
       <div className={classes}>
         <div className="column__heading">
+          <div className="delete delete--column" onClick={this.onDeleteClick.bind(this)}></div>
           {
             this.state.isEditingTitle
               ? (
                 <div className="heading__input">
-                  <input type="text" value={this.state.title} placeholder="Column Title"onChange={this.onTitleChange.bind(this)} onBlur={this.onInputBlur.bind(this)} autoFocus/>
+                  <input type="text" value={this.state.title} placeholder="Column Title" onChange={this.onTitleChange.bind(this)} onBlur={this.onInputBlur.bind(this)} onKeyPress={this.onKeyPress.bind(this)} autoFocus/>
                 </div>
               )
               : (
