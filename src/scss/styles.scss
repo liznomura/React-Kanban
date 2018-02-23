@@ -15,6 +15,10 @@ $high: rgba(255, 0, 0, 0.2);
 $blocker: rgba(51, 153, 255, 0.2);
 $done: rgba(128, 128, 128, 0.2);
 $controls: lighten(black, 40%);
+$hover-delete: rgba(255, 0, 0, 0.4);
+$hover-pencilbody: rgba(255, 255, 0, 0.7);
+$hover-pencileraser: rgba(255, 105, 180, 0.7);
+$hover-penciltip: rgba(0, 0, 0, 0.7);
 
 /*
 KANBAN BOARD
@@ -44,6 +48,7 @@ $delete-width: 15px * $delete-scale;
 $delete-height: 15px * $delete-scale;
 $delete-thickness: 3px * $delete-scale;
 $delete-end-roundness: 2px * $delete-scale;
+$delete-card-margin-top: 2px * $delete-scale;
 
 @mixin trans {
   -webkit-transition: all 0.5s;
@@ -148,13 +153,21 @@ body {
   width: 33%;
   background: white;
   overflow: hidden;
+  border-right: 1px dotted;
+
+  &:last-child {
+    border-right: none;
+  }
 
   .column__heading {
     text-transform: uppercase;
-    text-align: center;
     margin: 10px;
     background: transparent;
     cursor: pointer;
+
+    &:hover .delete--column {
+      opacity: 1;
+    }
   }
 
   .column__cards {
@@ -167,16 +180,29 @@ body {
   }
 }
 
+.heading__text {
+  text-align: center;
+}
+
+.heading__input input{
+  width: 100%;
+}
+
 .card {
   display: flex;
   margin: 0 5px 5px 5px;
   padding: 2px 5px;
   font-size: $card-title-font-size;
   position: relative;
+
+  &:hover .card__controls {
+    visibility: visible;
+  }
 }
 
 .card__controls {
   display: flex;
+  visibility: hidden;
   position: absolute;
   top: 2px;
   right: 5px;
@@ -238,15 +264,29 @@ EDIT
     transform: translateX($pencil-eraser-gap);
     background: $controls;
   }
+
+  &:hover {
+    background: $hover-pencilbody;
+    transition: background 0.2s ease;
+  }
+
+  &:hover:before {
+    border-color: transparent $hover-penciltip transparent transparent;
+    transition: border-color 0.2s ease;
+  }
+
+  &:hover:after {
+    background: $hover-pencileraser;
+    transition: background 0.2s ease;
+  }
 }
 
 /*
 DELETE
 */
-.card__delete {
+.delete {
   position: relative;
   display: inline-block;
-  margin-top: 2px;
   width: $delete-width;
   height: $delete-height;
 
@@ -271,6 +311,21 @@ DELETE
   &:after {
     transform: translate(-50%, -50%) rotate(-45deg);
   }
+
+  &:hover:before,
+  &:hover:after {
+    background: $hover-delete;
+    transition: background 0.2s ease;
+  }
+}
+
+.delete--card {
+  margin-top: $delete-card-margin-top;
+}
+
+.delete--column {
+  opacity: 0;
+  transition: opacity 0.35s ease;
 }
 
 .card__content {
@@ -299,22 +354,22 @@ DELETE
 
 .card--low {
   background: $low;
-  border: 1px solid darken($low, 20%);
+  border-top: 8px solid darken($low, 20%);
 }
 
 .card--medium {
   background: $medium;
-  border: 1px solid darken($medium, 20%);
+  border-top: 8px solid darken($medium, 20%);
 }
 
 .card--high {
   background: $high;
-  border: 1px solid darken($high, 20%);
+  border-top: 8px solid darken($high, 20%);
 }
 
 .card--blocker {
   background: $blocker;
-  border: 1px solid darken($blocker, 20%);
+  border-top: 8px solid darken($blocker, 20%);
 }
 
 .card--opacity {

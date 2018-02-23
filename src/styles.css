@@ -97,18 +97,28 @@ body {
 .column {
   width: 33%;
   background: white;
-  overflow: hidden; }
+  overflow: hidden;
+  border-right: 1px dotted; }
+  .column:last-child {
+    border-right: none; }
   .column .column__heading {
     text-transform: uppercase;
-    text-align: center;
     margin: 10px;
     background: transparent;
     cursor: pointer; }
+    .column .column__heading:hover .delete--column {
+      opacity: 1; }
   .column .column__cards {
     height: 92%;
     overflow: auto; }
   .column.column--over {
     border: 1px dashed #4d525b; }
+
+.heading__text {
+  text-align: center; }
+
+.heading__input input {
+  width: 100%; }
 
 .card {
   display: flex;
@@ -116,9 +126,12 @@ body {
   padding: 2px 5px;
   font-size: 14px;
   position: relative; }
+  .card:hover .card__controls {
+    visibility: visible; }
 
 .card__controls {
   display: flex;
+  visibility: hidden;
   position: absolute;
   top: 2px;
   right: 5px; }
@@ -169,17 +182,25 @@ EDIT
     width: 2px;
     transform: translateX(1px);
     background: #666666; }
+  .pencil:hover {
+    background: rgba(255, 255, 0, 0.7);
+    transition: background 0.2s ease; }
+  .pencil:hover:before {
+    border-color: transparent rgba(0, 0, 0, 0.7) transparent transparent;
+    transition: border-color 0.2s ease; }
+  .pencil:hover:after {
+    background: rgba(255, 105, 180, 0.7);
+    transition: background 0.2s ease; }
 
 /*
 DELETE
 */
-.card__delete {
+.delete {
   position: relative;
   display: inline-block;
-  margin-top: 2px;
   width: 15px;
   height: 15px; }
-  .card__delete:before, .card__delete:after {
+  .delete:before, .delete:after {
     content: '';
     display: block;
     position: absolute;
@@ -190,10 +211,20 @@ DELETE
     border-radius: 2px;
     background: #666666;
     cursor: pointer; }
-  .card__delete:before {
+  .delete:before {
     transform: translate(-50%, -50%) rotate(45deg); }
-  .card__delete:after {
+  .delete:after {
     transform: translate(-50%, -50%) rotate(-45deg); }
+  .delete:hover:before, .delete:hover:after {
+    background: rgba(255, 0, 0, 0.4);
+    transition: background 0.2s ease; }
+
+.delete--card {
+  margin-top: 2px; }
+
+.delete--column {
+  opacity: 0;
+  transition: opacity 0.35s ease; }
 
 .card__content {
   display: flex;
@@ -216,19 +247,19 @@ DELETE
 
 .card--low {
   background: rgba(0, 255, 0, 0.2);
-  border: 1px solid rgba(0, 153, 0, 0.2); }
+  border-top: 8px solid rgba(0, 153, 0, 0.2); }
 
 .card--medium {
   background: rgba(255, 255, 0, 0.2);
-  border: 1px solid rgba(153, 153, 0, 0.2); }
+  border-top: 8px solid rgba(153, 153, 0, 0.2); }
 
 .card--high {
   background: rgba(255, 0, 0, 0.2);
-  border: 1px solid rgba(153, 0, 0, 0.2); }
+  border-top: 8px solid rgba(153, 0, 0, 0.2); }
 
 .card--blocker {
   background: rgba(51, 153, 255, 0.2);
-  border: 1px solid rgba(0, 102, 204, 0.2); }
+  border-top: 8px solid rgba(0, 102, 204, 0.2); }
 
 .card--opacity {
   opacity: 0.4; }
