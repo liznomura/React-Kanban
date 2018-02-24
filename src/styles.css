@@ -25,7 +25,7 @@ body {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 12px;
   letter-spacing: 0.1rem;
-  background: #f4f4f8; }
+  background: #FBFBFC; }
 
 .app {
   height: 100%;
@@ -35,19 +35,21 @@ body {
   justify-content: center;
   align-items: center;
   margin: auto;
-  background: #f4f4f8; }
+  background: #FBFBFC; }
 
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #4d525b;
+  background: #58A4B0;
   width: 100%;
   padding: 6px 8px 8px 8px;
   color: white;
   text-transform: uppercase; }
 
 .nav__title {
+  font-weight: 900;
+  font-size: 16px;
   padding: 5px; }
 
 .new-task-btn,
@@ -65,7 +67,7 @@ body {
   .new-task-btn:hover,
   .new-column-btn:hover {
     background: white;
-    color: #4d525b; }
+    color: #58A4B0; }
 
 .add-form {
   display: none;
@@ -73,7 +75,7 @@ body {
   top: 43px;
   width: 80%;
   padding: 8px 12px;
-  background: #4d525b;
+  background: #58A4B0;
   z-index: 999; }
   .add-form.add-form--display {
     display: block; }
@@ -91,7 +93,7 @@ body {
   transition: all 0.5s; }
   .add-form__add-card-btn:hover {
     background: white;
-    color: #4d525b; }
+    color: #58A4B0; }
 
 .kanban-board {
   display: flex;
@@ -101,6 +103,7 @@ body {
   width: 100%; }
 
 .column {
+  position: relative;
   width: 33.3%;
   background: white;
   overflow: hidden;
@@ -109,7 +112,7 @@ body {
     border-right: none; }
   .column .column__heading {
     text-transform: uppercase;
-    margin: 10px;
+    margin: 16px;
     background: transparent;
     cursor: pointer; }
     .column .column__heading:hover .delete--column {
@@ -118,7 +121,7 @@ body {
     height: 92%;
     overflow: auto; }
   .column.column--over {
-    border: 1px dotted #4d525b; }
+    border: 1px dotted #58A4B0; }
 
 .heading__text {
   text-align: center; }
@@ -131,13 +134,14 @@ body {
   margin: 0 5px 5px 5px;
   padding: 2px 5px;
   font-size: 14px;
-  position: relative; }
+  position: relative;
+  background: #FBFBFC; }
 
 .card__controls {
   display: flex;
   visibility: hidden;
   position: absolute;
-  background: rgba(255, 255, 255, 0.8);
+  background: transparent;
   border-radius: 5px;
   padding-right: 3px;
   top: 2px;
@@ -226,7 +230,7 @@ DELETE
   .delete:after {
     transform: translate(-50%, -50%) rotate(-45deg); }
   .delete:hover:before, .delete:hover:after {
-    background: rgba(255, 0, 0, 0.4);
+    background: rgba(255, 0, 0, 0.7);
     transition: background 0.2s ease; }
 
 .delete--card {
@@ -234,7 +238,10 @@ DELETE
 
 .delete--column {
   opacity: 0;
-  transition: opacity 0.35s ease; }
+  transition: opacity 0.35s ease;
+  position: absolute;
+  top: 4px;
+  left: 5px; }
 
 .card__content {
   display: flex;
@@ -256,16 +263,13 @@ DELETE
   font-weight: 900; }
 
 .card--low {
-  background: rgba(0, 255, 0, 0.2);
-  border-left: 8px solid rgba(0, 153, 0, 0.2); }
+  border-left: 8px solid #BAEA8A; }
 
 .card--medium {
-  background: rgba(255, 255, 0, 0.2);
-  border-left: 8px solid rgba(153, 153, 0, 0.2); }
+  border-left: 8px solid #FED766; }
 
 .card--high {
-  background: rgba(255, 0, 0, 0.2);
-  border-left: 8px solid rgba(153, 0, 0, 0.2); }
+  border-left: 8px solid #FE4A49; }
 
 .card--dragging {
   opacity: 0.4; }

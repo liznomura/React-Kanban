@@ -2,20 +2,21 @@
 
 $f: 'Source Sans Pro', sans-serif;
 $base-font-size: 12px;
+$nav-title-size: 16px;
 $card-title-font-size: 14px;
 $card-content-font-size: 10px;
 
 /*
 COLORS
 */
-$offwhite: rgba(244, 244, 248, 1);
-$nav: rgba(77, 82, 91, 1);
-$low: rgba(0, 255, 0, 0.2);
-$medium: rgba(255, 255, 0, 0.2);
-$high: rgba(255, 0, 0, 0.2);
+$offwhite: #FBFBFC;
+$nav: #58A4B0;
+$low: #BAEA8A;
+$medium: #FED766;
+$high: #FE4A49;
 $done: rgba(128, 128, 128, 0.2);
 $controls: lighten(black, 40%);
-$hover-delete: rgba(255, 0, 0, 0.4);
+$hover-delete: rgba(255, 0, 0, 0.7);
 $hover-pencilbody: rgba(255, 255, 0, 0.7);
 $hover-pencileraser: rgba(255, 105, 180, 0.7);
 $hover-penciltip: rgba(0, 0, 0, 0.7);
@@ -97,6 +98,8 @@ body {
 }
 
 .nav__title {
+  font-weight: 900;
+  font-size: $nav-title-size;
   padding: 5px;
 }
 
@@ -157,6 +160,7 @@ body {
 }
 
 .column {
+  position: relative;
   width: 33.3%;
   background: white;
   overflow: hidden;
@@ -168,7 +172,7 @@ body {
 
   .column__heading {
     text-transform: uppercase;
-    margin: 10px;
+    margin: 16px;
     background: transparent;
     cursor: pointer;
 
@@ -201,13 +205,14 @@ body {
   padding: 2px 5px;
   font-size: $card-title-font-size;
   position: relative;
+  background: $offwhite;
 }
 
 .card__controls {
   display: flex;
   visibility: hidden;
   position: absolute;
-  background: rgba(255, 255, 255, 0.8);
+  background: transparent;
   border-radius: 5px;
   padding-right: 3px;
   top: 2px;
@@ -336,6 +341,9 @@ DELETE
 .delete--column {
   opacity: 0;
   transition: opacity 0.35s ease;
+  position: absolute;
+  top: 4px;
+  left: 5px;
 }
 
 .card__content {
@@ -363,18 +371,15 @@ DELETE
 }
 
 .card--low {
-  background: $low;
-  border-left: 8px solid darken($low, 20%);
+  border-left: 8px solid $low;
 }
 
 .card--medium {
-  background: $medium;
-  border-left: 8px solid darken($medium, 20%);
+  border-left: 8px solid $medium;
 }
 
 .card--high {
-  background: $high;
-  border-left: 8px solid darken($high, 20%);
+  border-left: 8px solid $high;
 }
 
 .card--dragging {
