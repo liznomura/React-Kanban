@@ -57,7 +57,6 @@ class NewCardForm extends PureComponent {
             <option value="low">Low</option>
             <option value="medium">Medium</option>
             <option value="high">High</option>
-            <option value="blocker">Blocker</option>
           </select>
           <input
             className="add-form__input"

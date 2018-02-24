@@ -8,11 +8,11 @@ $card-content-font-size: 10px;
 /*
 COLORS
 */
+$offwhite: rgba(244, 244, 248, 1);
 $nav: rgba(77, 82, 91, 1);
 $low: rgba(0, 255, 0, 0.2);
 $medium: rgba(255, 255, 0, 0.2);
 $high: rgba(255, 0, 0, 0.2);
-$blocker: rgba(51, 153, 255, 0.2);
 $done: rgba(128, 128, 128, 0.2);
 $controls: lighten(black, 40%);
 $hover-delete: rgba(255, 0, 0, 0.4);
@@ -70,7 +70,8 @@ body {
   padding: 0;
   font-family: $f;
   font-size: $base-font-size;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.1rem;
+  background: $offwhite;
 }
 
 .app {
@@ -81,6 +82,7 @@ body {
   justify-content: center;
   align-items: center;
   margin: auto;
+  background: $offwhite;
 }
 
 .nav {
@@ -89,19 +91,24 @@ body {
   align-items: center;
   background: $nav;
   width: 100%;
-  padding: 8px 10px;
+  padding: 6px 8px 8px 8px;
   color: white;
   text-transform: uppercase;
 }
 
+.nav__title {
+  padding: 5px;
+}
+
 .new-task-btn,
 .new-column-btn {
-  margin: 2px;
+  margin: 4px;
   background: transparent;
   color: white;
   padding: 5px;
   border: 1px solid white;
   border-radius: 4px;
+  text-transform: uppercase;
   @include trans;
 
   &:hover {
@@ -368,11 +375,6 @@ DELETE
 .card--high {
   background: $high;
   border-left: 8px solid darken($high, 20%);
-}
-
-.card--blocker {
-  background: $blocker;
-  border-left: 8px solid darken($blocker, 20%);
 }
 
 .card--dragging {
