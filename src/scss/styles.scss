@@ -176,7 +176,7 @@ body {
   }
 
   &.column--over {
-    border: 1px dashed $nav;
+    border: 1px dotted $nav;
   }
 }
 
@@ -194,18 +194,21 @@ body {
   padding: 2px 5px;
   font-size: $card-title-font-size;
   position: relative;
-
-  &:hover .card__controls {
-    visibility: visible;
-  }
 }
 
 .card__controls {
   display: flex;
   visibility: hidden;
   position: absolute;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  padding-right: 3px;
   top: 2px;
   right: 5px;
+}
+
+.card__controls--hover:hover .card__controls{
+  visibility: visible;
 }
 
 /*
@@ -372,7 +375,7 @@ DELETE
   border-left: 8px solid darken($blocker, 20%);
 }
 
-.card--opacity {
+.card--dragging {
   opacity: 0.4;
 }
 

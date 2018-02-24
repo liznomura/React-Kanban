@@ -112,7 +112,7 @@ body {
     height: 92%;
     overflow: auto; }
   .column.column--over {
-    border: 1px dashed #4d525b; }
+    border: 1px dotted #4d525b; }
 
 .heading__text {
   text-align: center; }
@@ -126,15 +126,19 @@ body {
   padding: 2px 5px;
   font-size: 14px;
   position: relative; }
-  .card:hover .card__controls {
-    visibility: visible; }
 
 .card__controls {
   display: flex;
   visibility: hidden;
   position: absolute;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  padding-right: 3px;
   top: 2px;
   right: 5px; }
+
+.card__controls--hover:hover .card__controls {
+  visibility: visible; }
 
 /*
 EDIT
@@ -261,7 +265,7 @@ DELETE
   background: rgba(51, 153, 255, 0.2);
   border-left: 8px solid rgba(0, 102, 204, 0.2); }
 
-.card--opacity {
+.card--dragging {
   opacity: 0.4; }
 
 .edit-form {
