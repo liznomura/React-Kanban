@@ -19,7 +19,7 @@ class Card extends PureComponent {
   }
 
   render() {
-    const classes = `card card--${this.props.priority} ${this.props.dragging !== false ? 'card--dragging' : ''} ${this.props.editing === false ? 'card__controls--hover' : ''}`;
+    const classes = `card card--${this.props.priority} ${this.props.dragging !== false ? 'card--dragging' : ''} ${this.props.editing === false && this.props.dragging === false ? 'card__controls--hover' : ''}`;
     const isEditing = this.props.editing;
     const cardId = parseInt(this.props.id, 10);
 
