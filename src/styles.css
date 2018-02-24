@@ -39,6 +39,8 @@ body {
 
 .nav {
   display: flex;
+  font-weight: 900;
+  font-size: 16px;
   justify-content: space-between;
   align-items: center;
   background: #58A4B0;
@@ -48,12 +50,13 @@ body {
   text-transform: uppercase; }
 
 .nav__title {
-  font-weight: 900;
-  font-size: 16px;
   padding: 5px; }
 
 .new-task-btn,
 .new-column-btn {
+  font-family: "Source Sans Pro", sans-serif;
+  letter-spacing: 0.1rem;
+  font-weight: 900;
   margin: 4px;
   background: transparent;
   color: white;
