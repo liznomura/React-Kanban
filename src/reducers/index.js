@@ -3,7 +3,20 @@ import { ADD_CARD, EDIT_CARD, DEL_CARD, MOVE_CARD, SET_DRAG, TOGGLE_EDIT, ADD_CO
 const initialState = {
   editing: false,
   dragging: false,
-  columns: ['in queue', 'in progress', 'done'],
+  columns: [
+    {
+      id:0,
+      title:'in queue'
+    },
+    {
+      id:1,
+      title:'in progress'
+    },
+    {
+      id:2,
+      title:'done'
+    }
+  ],
   cards: [
     {
       id:0,
@@ -112,7 +125,7 @@ const kanbanReducer = (state = initialState, action) => {
         }
 
       case ADD_COLUMN:
-        return Object.assign({}, state, { columns: [...state.columns, action.colTitle] })
+        return Object.assign({}, state, { columns: [...state.columns, action.col] })
 
       case EDIT_COLUMN_TITLE:
         let copyArr = state.columns.slice();

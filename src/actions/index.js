@@ -12,6 +12,7 @@ export const DEL_COLUMN = 'DEL_COLUMN'
 
 //action creators
 let nextCardId = 0
+let nextColId = 0
 
 // export const loadCards = () => {
 //   return dispatch => {
@@ -72,9 +73,10 @@ export const toggleEdit = current => {
 }
 
 export const addColumn = colTitle => {
+  nextColId++
   return {
     type: ADD_COLUMN,
-    colTitle
+    col: { id: nextColId, title: colTitle }
   }
 }
 
