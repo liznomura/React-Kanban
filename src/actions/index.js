@@ -8,6 +8,7 @@ export const SET_DRAG = 'SET_DRAG'
 export const TOGGLE_EDIT = 'TOGGLE_EDIT'
 export const ADD_COLUMN = 'ADD_COLUMN'
 export const EDIT_COLUMN_TITLE = 'EDIT_COLUMN_TITLE'
+export const DEL_COLUMN = 'DEL_COLUMN'
 
 //action creators
 let nextCardId = 0
@@ -82,5 +83,12 @@ export const editColumnTitle = (colId, newTitle) => {
     type: EDIT_COLUMN_TITLE,
     colId,
     newTitle
+  }
+}
+
+export const delColumn = colId => {
+  return {
+    type: DEL_COLUMN,
+    colId
   }
 }

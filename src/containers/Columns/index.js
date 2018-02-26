@@ -15,20 +15,24 @@ class Columns extends PureComponent {
   }
 
   handleMouseEnter () {
-    if(this.props.dragging !== false) {
+    if (this.props.dragging !== false) {
       this.setState({ isOver: true })
     }
   }
 
   handleMouseLeave () {
-    if(this.props.dragging !== false) {
+    if (this.props.dragging !== false) {
       this.setState({ isOver: false })
     }
   }
 
   handleMouseUp (e) {
-    if(this.props.dragging !== false) {
-      this.props.moveCard(e.target.dataset.name)
+    if (this.props.dragging !== false) {
+
+      if (e.target.dataset.name) {
+        this.props.moveCard(e.target.dataset.name)
+      }
+
       this.props.setDrag(false)
       this.setState({ isOver: false })
     }
@@ -41,9 +45,11 @@ class Columns extends PureComponent {
   }
 
   onTitleClick () {
-    this.setState({
-      isEditingTitle: true
-    })
+    if (!this.state.isEditingTitle) {
+      this.setState({
+        isEditingTitle: true
+      })
+    }
   }
 
   onTitleChange (e) {
@@ -53,10 +59,32 @@ class Columns extends PureComponent {
   }
 
   onInputBlur () {
+    if (this.state.title === '') {
+      return
+    }
+
     this.setState({
       isEditingTitle: false
     })
+
     this.props.editColumnTitle(this.props.colId, this.state.title)
+  }
+
+  onKeyPress (e) {
+    if (e.charCode === 13 && this.state.title !== '') {
+
+      this.setState({
+        isEditingTitle: false
+      })
+
+      this.props.editColumnTitle(this.props.colId, this.state.title)
+
+      return false
+    }
+  }
+
+  onDeleteClick () {
+    this.props.handleColumnDelete(this.props.colId)
   }
 
   render() {
@@ -64,17 +92,24 @@ class Columns extends PureComponent {
     return (
       <div className={classes}>
         <div className="column__heading">
+          <div className="delete delete--column" onClick={this.onDeleteClick.bind(this)}></div>
           {
             this.state.isEditingTitle
               ? (
                 <div className="heading__input">
-                  <input type="text" value={this.state.title} onChange={this.onTitleChange.bind(this)} onBlur={this.onInputBlur.bind(this)}/>
+                  <input
+                  type="text"
+                  value={this.state.title}
+                  placeholder="Column Title"
+                  onChange={this.onTitleChange.bind(this)}
+                  onBlur={this.onInputBlur.bind(this)}
+                  onKeyPress={this.onKeyPress.bind(this)} autoFocus/>
                 </div>
               )
               : (
                 <div
                   className="heading__text"
-                  onClick={this.onTitleClick.bind(this)}
+                  onDoubleClick={this.onTitleClick.bind(this)}
                 >
                   {this.state.title}
                 </div>

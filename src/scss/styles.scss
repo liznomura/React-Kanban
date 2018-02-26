@@ -2,19 +2,19 @@
 
 $f: 'Source Sans Pro', sans-serif;
 $base-font-size: 12px;
+$nav-title-size: 16px;
 $card-title-font-size: 14px;
 $card-content-font-size: 10px;
 
 /*
 COLORS
 */
-$nav: rgba(77, 82, 91, 1);
-$low: rgba(0, 255, 0, 0.2);
-$medium: rgba(255, 255, 0, 0.2);
-$high: rgba(255, 0, 0, 0.2);
-$blocker: rgba(51, 153, 255, 0.2);
-$done: rgba(128, 128, 128, 0.2);
-$controls: lighten(black, 40%);
+$offwhite: #FBFBFC;
+$blue: #58A4B0;
+$green: #BAEA8A;
+$yellow: #FED766;
+$red: #FE4A49;
+$dark-grey: #4c4c4c;
 
 /*
 KANBAN BOARD
@@ -44,6 +44,7 @@ $delete-width: 15px * $delete-scale;
 $delete-height: 15px * $delete-scale;
 $delete-thickness: 3px * $delete-scale;
 $delete-end-roundness: 2px * $delete-scale;
+$delete-card-margin-top: 2px * $delete-scale;
 
 @mixin trans {
   -webkit-transition: all 0.5s;
@@ -65,7 +66,8 @@ body {
   padding: 0;
   font-family: $f;
   font-size: $base-font-size;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.1rem;
+  background: $offwhite;
 }
 
 .app {
@@ -76,32 +78,43 @@ body {
   justify-content: center;
   align-items: center;
   margin: auto;
+  background: $offwhite;
 }
 
 .nav {
   display: flex;
+  font-weight: 900;
+  font-size: $nav-title-size;
   justify-content: space-between;
   align-items: center;
-  background: $nav;
+  background: $blue;
   width: 100%;
-  padding: 8px 10px;
+  padding: 6px 8px 8px 8px;
   color: white;
   text-transform: uppercase;
 }
 
+.nav__title {
+  padding: 5px;
+}
+
 .new-task-btn,
 .new-column-btn {
-  margin: 2px;
+  font-family: $f;
+  letter-spacing: 0.1rem;
+  font-weight: 900;
+  margin: 4px;
   background: transparent;
   color: white;
   padding: 5px;
   border: 1px solid white;
   border-radius: 4px;
+  text-transform: uppercase;
   @include trans;
 
   &:hover {
     background: white;
-    color: $nav;
+    color: $blue;
   }
 }
 
@@ -111,7 +124,7 @@ body {
   top: 43px;
   width: 80%;
   padding: 8px 12px;
-  background: $nav;
+  background: $blue;
   z-index: 999;
 
   &.add-form--display {
@@ -132,7 +145,7 @@ body {
 
   &:hover {
     background: white;
-    color: $nav;
+    color: $blue;
   }
 }
 
@@ -145,16 +158,25 @@ body {
 }
 
 .column {
-  width: 33%;
+  position: relative;
+  width: 33.3%;
   background: white;
   overflow: hidden;
+  border-right: 1px dotted;
+
+  &:last-child {
+    border-right: none;
+  }
 
   .column__heading {
     text-transform: uppercase;
-    text-align: center;
-    margin: 10px;
+    margin: 16px;
     background: transparent;
     cursor: pointer;
+
+    &:hover .delete--column {
+      opacity: 1;
+    }
   }
 
   .column__cards {
@@ -163,8 +185,16 @@ body {
   }
 
   &.column--over {
-    border: 1px dashed $nav;
+    border: 1px dotted $blue;
   }
+}
+
+.heading__text {
+  text-align: center;
+}
+
+.heading__input input{
+  width: 100%;
 }
 
 .card {
@@ -173,13 +203,22 @@ body {
   padding: 2px 5px;
   font-size: $card-title-font-size;
   position: relative;
+  background: $offwhite;
 }
 
 .card__controls {
   display: flex;
+  visibility: hidden;
   position: absolute;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  padding-right: 3px;
   top: 2px;
   right: 5px;
+}
+
+.card__controls--hover:hover .card__controls {
+  visibility: visible;
 }
 
 /*
@@ -211,7 +250,7 @@ EDIT
   width: $pencil-body-length;
   height: $pencil-body-thickness;
   transform: translate(-50%, -50%) rotate(-45deg);
-  background: $controls;
+  background: $dark-grey;
 
   &:before,
   &:after {
@@ -227,7 +266,7 @@ EDIT
     height: 0;
     border-style: solid;
     border-width: ($pencil-body-thickness / 2);
-    border-color: transparent $controls transparent transparent;
+    border-color: transparent $dark-grey transparent transparent;
   }
 
   &:after {
@@ -236,17 +275,31 @@ EDIT
     height: $pencil-body-thickness;
     width: $pencil-eraser-length;
     transform: translateX($pencil-eraser-gap);
-    background: $controls;
+    background: $dark-grey;
+  }
+
+  &:hover {
+    background: $yellow;
+    transition: background 0.2s ease;
+  }
+
+  &:hover:before {
+    border-color: transparent $dark-grey transparent transparent;
+    transition: border-color 0.2s ease;
+  }
+
+  &:hover:after {
+    background: $red;
+    transition: background 0.2s ease;
   }
 }
 
 /*
 DELETE
 */
-.card__delete {
+.delete {
   position: relative;
   display: inline-block;
-  margin-top: 2px;
   width: $delete-width;
   height: $delete-height;
 
@@ -260,7 +313,7 @@ DELETE
     width: 100%;
     height: $delete-thickness;
     border-radius: $delete-end-roundness;
-    background: $controls;
+    background: $dark-grey;
     cursor: pointer;
   }
 
@@ -271,6 +324,24 @@ DELETE
   &:after {
     transform: translate(-50%, -50%) rotate(-45deg);
   }
+
+  &:hover:before,
+  &:hover:after {
+    background: $red;
+    transition: background 0.2s ease;
+  }
+}
+
+.delete--card {
+  margin-top: $delete-card-margin-top;
+}
+
+.delete--column {
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  position: absolute;
+  top: 4px;
+  left: 5px;
 }
 
 .card__content {
@@ -298,26 +369,18 @@ DELETE
 }
 
 .card--low {
-  background: $low;
-  border: 1px solid darken($low, 20%);
+  border-left: 8px solid $green;
 }
 
 .card--medium {
-  background: $medium;
-  border: 1px solid darken($medium, 20%);
+  border-left: 8px solid $yellow;
 }
 
 .card--high {
-  background: $high;
-  border: 1px solid darken($high, 20%);
+  border-left: 8px solid $red;
 }
 
-.card--blocker {
-  background: $blocker;
-  border: 1px solid darken($blocker, 20%);
-}
-
-.card--opacity {
+.card--dragging {
   opacity: 0.4;
 }
 

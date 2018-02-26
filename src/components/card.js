@@ -11,8 +11,15 @@ class Card extends PureComponent {
     this.props.toggleEdit(id)
   }
 
+  onDoubleClick(e) {
+    const id = parseInt(this.props.id, 10);
+    if (this.props.editing === false) {
+      this.props.toggleEdit(id)
+    }
+  }
+
   render() {
-    const classes = `card card--${this.props.priority} ${this.props.dragging ? 'card--opacity' : ''}`;
+    const classes = `card card--${this.props.priority} ${this.props.dragging !== false ? 'card--dragging' : ''} ${this.props.editing === false && this.props.dragging === false ? 'card__controls--hover' : ''}`;
     const isEditing = this.props.editing;
     const cardId = parseInt(this.props.id, 10);
 
@@ -22,6 +29,7 @@ class Card extends PureComponent {
         className={classes}
         draggable="true"
         onDragStart={this.props.onDragStart}
+        onDoubleClick={this.onDoubleClick.bind(this)}
       >
         <div className="card__controls">
           <div
@@ -29,7 +37,7 @@ class Card extends PureComponent {
             onClick={this.toggleEditing.bind(this)}
           ><Edit /></div>
           <div
-            className="card__delete"
+            className="delete delete--card"
             onClick={() => this.props.handleDelete(this.props.id)}
           />
         </div>
@@ -47,11 +55,11 @@ class Card extends PureComponent {
           ) : (
           <div className="card__content">
             <h2>{this.props.title}</h2>
-            <div>Priority: {this.props.priority}</div>
+            <div><b>Priority:</b> {this.props.priority}</div>
             <div className="card__assignments">
-              <span>Assigned by: {this.props.createdBy}</span>
+              <span><b>Assigned by:</b> {this.props.createdBy}</span>
               <div className="card__assigned-to">
-                <span>{this.props.assignedTo}</span>
+                <span><u>{this.props.assignedTo}</u></span>
               </div>
             </div>
           </div>
