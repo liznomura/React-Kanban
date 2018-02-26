@@ -55,11 +55,11 @@ class Card extends PureComponent {
           ) : (
           <div className="card__content">
             <h2>{this.props.title}</h2>
-            <div>Priority: {this.props.priority}</div>
+            <div><b>Priority:</b> {this.props.priority}</div>
             <div className="card__assignments">
-              <span>Assigned by: {this.props.createdBy}</span>
+              <span><b>Assigned by:</b> {this.props.createdBy}</span>
               <div className="card__assigned-to">
-                <span>{this.props.assignedTo}</span>
+                <span><u>{this.props.assignedTo}</u></span>
               </div>
             </div>
           </div>

@@ -144,7 +144,7 @@ body {
   display: flex;
   visibility: hidden;
   position: absolute;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 5px;
   padding-right: 3px;
   top: 2px;

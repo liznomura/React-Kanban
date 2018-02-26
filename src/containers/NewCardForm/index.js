@@ -8,7 +8,7 @@ class NewCardForm extends PureComponent {
 
     this.state = {
       title: '',
-      priority: 'low',
+      priority: 'new',
       createdBy: '',
       assignedTo: ''
     }
@@ -30,7 +30,7 @@ class NewCardForm extends PureComponent {
 
     this.setState({
       title: '',
-      priority: 'low',
+      priority: 'new',
       createdBy: '',
       assignedTo: ''
     })
