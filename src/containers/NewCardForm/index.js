@@ -8,7 +8,7 @@ class NewCardForm extends PureComponent {
 
     this.state = {
       title: '',
-      priority: 'new',
+      priority: 'low',
       createdBy: '',
       assignedTo: ''
     }
@@ -30,7 +30,7 @@ class NewCardForm extends PureComponent {
 
     this.setState({
       title: '',
-      priority: 'new',
+      priority: 'low',
       createdBy: '',
       assignedTo: ''
     })
@@ -54,6 +54,7 @@ class NewCardForm extends PureComponent {
             onChange={this.handleChange.bind(this)}
             value={this.state.priority}
           >
+            <option value="">-</option>
             <option value="low">Low</option>
             <option value="medium">Medium</option>
             <option value="high">High</option>

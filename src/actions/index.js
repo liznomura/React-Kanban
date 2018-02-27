@@ -12,27 +12,13 @@ export const DEL_COLUMN = 'DEL_COLUMN'
 
 //action creators
 let nextCardId = 0
-let nextColId = 0
-
-// export const loadCards = () => {
-//   return dispatch => {
-//     fetch('/cards')
-//       .then(cards => cards.json())
-//       .then(cards => {
-//         dispatch({
-//           type: LOAD_CARDS,
-//           cards
-//         });
-//       })
-//       .catch(err => console.log(err));
-//   };
-// };
+let nextColId = 2
 
 export const addCard = card => {
   nextCardId++
   return {
     type: ADD_CARD,
-    card: { id: nextCardId, status: 'in queue', ...card }
+    card: { id: nextCardId, colId: 0, ...card }
   }
 }
 
@@ -51,10 +37,10 @@ export const editCard = card => {
 }
 
 
-export const moveCard = status => {
+export const moveCard = colId => {
   return {
     type: MOVE_CARD,
-    status
+    colId
   }
 }
 

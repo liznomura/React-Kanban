@@ -7,10 +7,11 @@ class Nav extends PureComponent {
   addTask () {
     const card = {
       title: '',
-      priority: 'new',
+      priority: '',
       createdBy: '',
       assignedTo: ''
     };
+
 
     if (this.props.editing === false) { // shouldn't add new card if new card is already out
       const id = this.props.addCard(card);
