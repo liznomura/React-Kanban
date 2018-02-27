@@ -45,11 +45,11 @@ class Card extends PureComponent {
           <div className="card__content">
             <EditForm
             cardId={cardId}
+            colId={this.props.colId}
             title={this.props.title}
             priority={this.props.priority}
             assignedBy={this.props.createdBy}
             assignedTo={this.props.assignedTo}
-            status={this.props.status}
             />
           </div>
           ) : (

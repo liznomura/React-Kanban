@@ -3,11 +3,24 @@ import { ADD_CARD, EDIT_CARD, DEL_CARD, MOVE_CARD, SET_DRAG, TOGGLE_EDIT, ADD_CO
 const initialState = {
   editing: false,
   dragging: false,
-  columns: ['in queue', 'in progress', 'done'],
+  columns: [
+    {
+      id:0,
+      title:'in queue'
+    },
+    {
+      id:1,
+      title:'in progress'
+    },
+    {
+      id:2,
+      title:'done'
+    }
+  ],
   cards: [
     {
       id:0,
-      status:"in queue",
+      colId:0,
       title:"Add your first task!",
       priority:"high",
       createdBy:"Me",
@@ -15,44 +28,7 @@ const initialState = {
     }
   ]
 }
-/*
-const state = {
-  columns: [
-    {
-      id: 1,
-      title: 'in queue',
-      cards: [
-        {
-          id: 1,
-          colId: 1,
-          title: 'Add your first task!',
-          priority: 'high',
-          createdBy: 'Me',
-          assignedTo: 'You'
-        },
-        {
-          id: 2,
-          colId: 1,
-          title: 'Second task in queue',
-          priority: 'low',
-          createdBy: 'Liz',
-          assignedTo: 'Anyone'
-        }
-      ]
-    },
-    {
-      id: 2,
-      title: 'in progress',
-      cards: []
-    },
-    {
-      id: 3,
-      title: 'done',
-      cards: []
-    }
-  ]
-}
-*/
+
 
 const kanbanReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -68,7 +44,7 @@ const kanbanReducer = (state = initialState, action) => {
         {
           cards: state.cards
             .map(card => {
-              if(card.id === action.card.id) {
+              if (card.id === action.card.id) {
                 card = {...action.card}
               }
 
@@ -92,8 +68,8 @@ const kanbanReducer = (state = initialState, action) => {
         {
           cards: state.cards
             .map(card => {
-              if(card.id === state.dragging) {
-                card.status = action.status
+              if (card.id === state.dragging) {
+                card.colId = action.colId
               }
 
               return card
@@ -105,27 +81,36 @@ const kanbanReducer = (state = initialState, action) => {
         return Object.assign({}, state, { dragging: action.current })
 
       case TOGGLE_EDIT:
-        if(state.editing === false) {
+        if (state.editing === false) {
           return Object.assign({}, state, { editing: action.current })
         } else {
           return Object.assign({}, state, { editing: false })
         }
 
       case ADD_COLUMN:
-        return Object.assign({}, state, { columns: [...state.columns, action.colTitle] })
+        return Object.assign({}, state, { columns: [...state.columns, action.col] })
 
       case EDIT_COLUMN_TITLE:
         let copyArr = state.columns.slice();
-        copyArr[action.colId] = action.newTitle;
-        return Object.assign({}, state, { columns: copyArr })
+
+        return Object.assign({}, state,
+          { columns: copyArr
+            .map(copyCol => {
+              if (copyCol.id === action.colId) {
+                copyCol.title = action.newTitle
+              }
+
+              return copyCol
+            })
+          }
+        )
 
       case DEL_COLUMN:
-        console.log(action)
         return Object.assign({}, state,
           {
             columns: state.columns
               .filter((column, i) =>
-                i !== action.colId
+                column.id !== action.colId
               )
           }
         )

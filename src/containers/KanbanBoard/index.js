@@ -25,8 +25,8 @@ class KanbanBoard extends PureComponent {
             .map((column, i) =>
               <Columns
                 key={i}
-                colId={i}
-                columnType={column}
+                colId={column.id}
+                columnType={column.title}
                 handleDelete={this.handleDelete.bind(this)}
                 handleColumnDelete={this.handleColumnDelete.bind(this)}
               />

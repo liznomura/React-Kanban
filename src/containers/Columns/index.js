@@ -29,8 +29,8 @@ class Columns extends PureComponent {
   handleMouseUp (e) {
     if (this.props.dragging !== false) {
 
-      if (e.target.dataset.name) {
-        this.props.moveCard(e.target.dataset.name)
+      if (e.target.dataset.colid) {
+        this.props.moveCard(parseInt(e.target.dataset.colid, 10))
       }
 
       this.props.setDrag(false)
@@ -39,7 +39,7 @@ class Columns extends PureComponent {
   }
 
   handleMouseDown (e) {
-    e.preventDefault()
+    e.preventDefault();
     const id = parseInt(e.target.id, 10);
     this.props.setDrag(id)
   }
@@ -111,14 +111,14 @@ class Columns extends PureComponent {
                   className="heading__text"
                   onDoubleClick={this.onTitleClick.bind(this)}
                 >
-                  {this.state.title}
+                  {this.props.columnType}
                 </div>
               )
           }
         </div>
         <div
           className="column__cards"
-          data-name={this.props.columnType}
+          data-colid={this.props.colId}
           onMouseUp={this.handleMouseUp.bind(this)}
           onMouseEnter={this.handleMouseEnter.bind(this)}
           onMouseLeave={this.handleMouseLeave.bind(this)}
@@ -126,7 +126,7 @@ class Columns extends PureComponent {
           {
             this.props.cards
             .filter(card =>
-              card.status === this.props.columnType
+              card.colId === this.props.colId
             )
             .map(card =>
               <Card
@@ -152,8 +152,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    moveCard: status => {
-      dispatch(moveCard(status))
+    moveCard: colId => {
+      dispatch(moveCard(colId))
     },
 
     setDrag: current => {

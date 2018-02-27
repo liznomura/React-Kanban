@@ -8,11 +8,11 @@ class EditForm extends PureComponent {
 
     this.state = {
       id: this.props.cardId,
+      colId: this.props.colId,
       title: this.props.title,
       priority: this.props.priority,
       createdBy: this.props.assignedBy,
-      assignedTo: this.props.assignedTo,
-      status: this.props.status
+      assignedTo: this.props.assignedTo
     }
   }
 
@@ -55,6 +55,7 @@ class EditForm extends PureComponent {
             onChange={this.handleChange.bind(this)}
             value={this.state.priority}
           >
+            <option value="">-</option>
             <option value="low">Low</option>
             <option value="medium">Medium</option>
             <option value="high">High</option>
