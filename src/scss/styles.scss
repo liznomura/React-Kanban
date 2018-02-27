@@ -15,6 +15,7 @@ $green: #BAEA8A;
 $yellow: #FED766;
 $red: #FE4A49;
 $dark-grey: #4c4c4c;
+$popup-dark: rgba(0,0,0, 0.7);
 
 /*
 KANBAN BOARD
@@ -413,4 +414,26 @@ DELETE
     border-color: black;
     color: black;
   }
+}
+
+/*
+POPUP
+*/
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  margin: auto;
+  background: $popup-dark;
+}
+
+.popup__content {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  top: 25%;
+  left: 25%;
+  margin: auto;
+  background: $offwhite;
 }

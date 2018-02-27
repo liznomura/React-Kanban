@@ -83,7 +83,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(setDrag(current))
     },
 
-    toggleEdit: (current) => {
+    toggleEdit: current => {
       dispatch(toggleEdit(current))
     }
   }
