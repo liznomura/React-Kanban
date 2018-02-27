@@ -84,7 +84,11 @@ class Columns extends PureComponent {
   }
 
   onDeleteClick () {
-    this.props.handleColumnDelete(this.props.colId)
+    if (this.props.cards.some(card => card.colId === this.props.colId)) {
+      console.log('no')
+    } else {
+      this.props.handleColumnDelete(this.props.colId)
+    }
   }
 
   render() {
