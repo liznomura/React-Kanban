@@ -23,7 +23,7 @@ class App extends PureComponent {
         <Nav visibilityToggle={this.visibilityToggle.bind(this)}/>
         <NewCardForm visibilityToggle={this.visibilityToggle.bind(this)}/>
         <KanbanBoard />
-        {this.props.showPopup ? <Popup text="no" togglePopup={this.togglePopup.bind(this)}/> : ''}
+        {this.props.showPopup ? <Popup text="Please move or delete tasks before deleting a column." togglePopup={this.togglePopup.bind(this)}/> : ''}
       </div>
     )
   }

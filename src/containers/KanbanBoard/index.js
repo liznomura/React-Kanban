@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { delCard, delColumn, togglePopup } from '../../actions'
+import { delCard, delColumn } from '../../actions'
 import Columns from '../Columns'
-import Popup from '../../components/popup'
 
 class KanbanBoard extends PureComponent {
 
@@ -12,10 +11,6 @@ class KanbanBoard extends PureComponent {
 
   handleColumnDelete(colId) {
     this.props.delColumn(colId)
-  }
-
-  componentWillMount() {
-    // this.props.loadCards()
   }
 
   render() {
