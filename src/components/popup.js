@@ -7,9 +7,9 @@ class Popup extends PureComponent {
     return (
       <div className="popup">
         <div className="popup__content">
-          <h2>Oops!</h2>
+          <div className="popup__content--header">Oops!</div>
           <p>{this.props.text}</p>
-          <button onClick={this.props.togglePopup}>Got it!</button>
+          <button className="btn popup-close-btn" onClick={this.props.togglePopup}>OK</button>
         </div>
       </div>
     );
