@@ -13,10 +13,6 @@ class KanbanBoard extends PureComponent {
     this.props.delColumn(colId)
   }
 
-  componentWillMount() {
-    // this.props.loadCards()
-  }
-
   render() {
     return (
       <div className="kanban-board">
@@ -40,7 +36,7 @@ class KanbanBoard extends PureComponent {
 const mapStateToProps = state => {
   return {
     columns: state.columns,
-    cards: state.cards
+    cards: state.cards,
   }
 }
 

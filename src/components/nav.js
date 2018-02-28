@@ -28,8 +28,8 @@ class Nav extends PureComponent {
       <div className="nav">
         <div className="nav__title">Kanban Board!</div>
         <div className="nav__controls">
-          <button className="new-task-btn" onClick={this.addTask.bind(this)}>New Task</button>
-          <button className="new-column-btn" onClick={this.addColumn.bind(this)}>Add Column</button>
+          <button className="btn new-task-btn" onClick={this.addTask.bind(this)}>New Task</button>
+          <button className="btn new-column-btn" onClick={this.addColumn.bind(this)}>Add Column</button>
         </div>
       </div>
     )
