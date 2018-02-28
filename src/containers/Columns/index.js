@@ -94,17 +94,12 @@ class Columns extends PureComponent {
     }
   }
 
-  togglePopup () {
-    this.props.togglePopup()
-  }
-
   render() {
     const classes = `column ${this.state.isOver ? 'column--over' : ''}`
     return (
       <div className={classes}>
         <div className="column__heading">
           <div className="delete delete--column" onClick={this.onDeleteClick.bind(this)}></div>
-          {this.props.showPopup ? <Popup text="no" togglePopup={this.togglePopup.bind(this)}/> : ''}
           {
             this.state.isEditingTitle
               ? (

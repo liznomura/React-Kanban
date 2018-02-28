@@ -1,21 +1,46 @@
-import React from 'react';
-import Nav from '../../components/nav.js';
-import NewCardForm from '../NewCardForm';
-import KanbanBoard from '../KanbanBoard';
+import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
+import { togglePopup } from '../../actions'
+import Nav from '../../components/nav.js'
+import NewCardForm from '../NewCardForm'
+import KanbanBoard from '../KanbanBoard'
+import Popup from '../../components/popup'
 
-function visibilityToggle() {
-  let form = document.getElementById('add-form');
-  form.classList.toggle('add-form--display');
+class App extends PureComponent {
+
+  visibilityToggle() {
+    let form = document.getElementById('add-form');
+    form.classList.toggle('add-form--display');
+  }
+
+  togglePopup() {
+    this.props.togglePopup()
+  }
+
+  render() {
+    return (
+      <div className="app">
+        <Nav visibilityToggle={this.visibilityToggle.bind(this)}/>
+        <NewCardForm visibilityToggle={this.visibilityToggle.bind(this)}/>
+        <KanbanBoard />
+        {this.props.showPopup ? <Popup text="no" togglePopup={this.togglePopup.bind(this)}/> : ''}
+      </div>
+    )
+  }
 }
 
-const App = () => (
-      <div className="app">
-      <Nav
-      visibilityToggle={visibilityToggle}/>
-      <NewCardForm
-      visibilityToggle={visibilityToggle}/>
-      <KanbanBoard />
-      </div>
-)
+const mapStateToProps = state => {
+  return {
+    showPopup: state.showPopup
+  }
+}
 
-export default App;
+const mapDispatchtoProps = dispatch => {
+  return {
+    togglePopup: () => {
+      dispatch(togglePopup())
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchtoProps)(App)

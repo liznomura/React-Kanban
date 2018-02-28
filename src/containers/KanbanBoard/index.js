@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { delCard, delColumn } from '../../actions'
+import { delCard, delColumn, togglePopup } from '../../actions'
 import Columns from '../Columns'
+import Popup from '../../components/popup'
 
 class KanbanBoard extends PureComponent {
 
@@ -40,7 +41,7 @@ class KanbanBoard extends PureComponent {
 const mapStateToProps = state => {
   return {
     columns: state.columns,
-    cards: state.cards
+    cards: state.cards,
   }
 }
 
