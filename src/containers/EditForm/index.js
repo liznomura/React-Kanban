@@ -39,7 +39,7 @@ class EditForm extends PureComponent {
     return (
       <div className="edit-form">
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <label htmlFor="title">Title: </label>
+          <label className="edit-form__label" htmlFor="title">Title: </label>
           <input
             className="edit-form__input"
             type="text"
@@ -48,7 +48,7 @@ class EditForm extends PureComponent {
             onChange={this.handleChange.bind(this)}
             value={this.state.title}
           />
-          <label htmlFor="priority">Priority: </label>
+          <label className="edit-form__label" htmlFor="priority">Priority: </label>
           <select
             className="edit-form__select"
             id="priority"
@@ -60,7 +60,7 @@ class EditForm extends PureComponent {
             <option value="medium">Medium</option>
             <option value="high">High</option>
           </select>
-          <label htmlFor="createdBy">Created By: </label>
+          <label className="edit-form__label" htmlFor="createdBy">Created By: </label>
           <input
             className="edit-form__input"
             type="text"
@@ -69,7 +69,7 @@ class EditForm extends PureComponent {
             onChange={this.handleChange.bind(this)}
             value={this.state.createdBy}
           />
-          <label htmlFor="assignedTo">Assigned To: </label>
+          <label className="edit-form__label" htmlFor="assignedTo">Assigned To: </label>
           <input
             className="edit-form__input"
             type="text"
@@ -78,12 +78,15 @@ class EditForm extends PureComponent {
             onChange={this.handleChange.bind(this)}
             value={this.state.assignedTo}
           />
-          <button
-            type="submit"
-            className="edit-form__edit-card-btn"
-          >
-            Save Task
-          </button>
+          <div className="edit-form-btn">
+            <button
+              type="submit"
+              className="edit-form__edit-card-btn"
+            >
+              Save Task
+            </button>
+            <div className="edit-form-btn__err-text"></div>
+          </div>
         </form>
       </div>
       )

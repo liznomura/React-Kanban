@@ -371,6 +371,10 @@ DELETE
   opacity: 0.4;
 }
 
+/*
+EDIT FORM
+*/
+
 .edit-form {
   padding-top: 10px;
   width: 100%;
@@ -388,18 +392,6 @@ DELETE
 
 .edit-form__select {
   cursor: pointer;
-}
-
-.edit-form__edit-card-btn {
-  background: white;
-  border: 1px solid;
-  border-radius: 4px;
-  cursor: pointer;
-
-  &:hover {
-    border-color: black;
-    color: black;
-  }
 }
 
 /*
@@ -461,6 +453,28 @@ BUTTONS
   &:hover {
     color: $blue;
     background: $offwhite;
+  }
+}
+
+.edit-form-btn__err-text {
+  display: none;
+  margin: 2px;
+
+  &:before {
+    content: '*';
+    color: $red;
+  }
+}
+
+.edit-form__edit-card-btn {
+  background: white;
+  border: 1px solid;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    border-color: black;
+    color: black;
   }
 }
 

@@ -260,6 +260,9 @@ DELETE
 .card--dragging {
   opacity: 0.4; }
 
+/*
+EDIT FORM
+*/
 .edit-form {
   padding-top: 10px;
   width: 100%; }
@@ -274,15 +277,6 @@ DELETE
 
 .edit-form__select {
   cursor: pointer; }
-
-.edit-form__edit-card-btn {
-  background: white;
-  border: 1px solid;
-  border-radius: 4px;
-  cursor: pointer; }
-  .edit-form__edit-card-btn:hover {
-    border-color: black;
-    color: black; }
 
 /*
 POPUP
@@ -340,6 +334,22 @@ BUTTONS
   .new-column-btn:hover {
     color: #58A4B0;
     background: #FBFBFC; }
+
+.edit-form-btn__err-text {
+  display: none;
+  margin: 2px; }
+  .edit-form-btn__err-text:before {
+    content: '*';
+    color: #FE4A49; }
+
+.edit-form__edit-card-btn {
+  background: white;
+  border: 1px solid;
+  border-radius: 4px;
+  cursor: pointer; }
+  .edit-form__edit-card-btn:hover {
+    border-color: black;
+    color: black; }
 
 .popup-close-btn {
   background: #FE4A49;
