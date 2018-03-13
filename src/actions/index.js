@@ -9,7 +9,8 @@ export const TOGGLE_EDIT = 'TOGGLE_EDIT'
 export const ADD_COLUMN = 'ADD_COLUMN'
 export const EDIT_COLUMN_TITLE = 'EDIT_COLUMN_TITLE'
 export const DEL_COLUMN = 'DEL_COLUMN'
-export const TOGGLE_POPUP = 'TOGGLE_POPUP'
+export const TOGGLE_ERRORPOPUP = 'TOGGLE_ERRORPOPUP'
+export const TOGGLE_INITIALPOPUP = 'TOGGLE_INITIALPOPUP'
 
 //action creators
 let nextCardId = 0
@@ -82,8 +83,14 @@ export const delColumn = colId => {
   }
 }
 
-export const togglePopup = () => {
+export const toggleErrorPopup = () => {
   return {
-    type: TOGGLE_POPUP
+    type: TOGGLE_ERRORPOPUP
+  }
+}
+
+export const toggleInitialPopup = () => {
+  return {
+    type: TOGGLE_INITIALPOPUP
   }
 }

@@ -103,6 +103,7 @@ body {
 
 .nav__title {
   padding: 5px;
+  cursor: pointer;
 }
 
 .add-form {
@@ -424,6 +425,13 @@ POPUP
   font-size: $popup-font-size;
   color: $offwhite;
   width: 100%;
+}
+
+.popup--onload {
+  background: $blue;
+}
+
+.popup--error {
   background: $red;
 }
 
@@ -478,7 +486,12 @@ BUTTONS
   }
 }
 
-.popup-close-btn {
-    background: $red;
-    color: $offwhite;
+.popup-close-btn--onload {
+  background: $blue;
+  color: $offwhite;
+}
+
+.popup-close-btn--error {
+  background: $red;
+  color: $offwhite;
 }

@@ -23,10 +23,14 @@ class Nav extends PureComponent {
     this.props.addColumn('new column')
   }
 
+  titleOnClick () {
+    window.location.reload();
+  }
+
   render () {
     return (
       <div className="nav">
-        <div className="nav__title">Kanban Board!</div>
+        <div className="nav__title" onClick={this.titleOnClick.bind(this)}>Kanban Board!</div>
         <div className="nav__controls">
           <button className="btn new-task-btn" onClick={this.addTask.bind(this)}>New Task</button>
           <button className="btn new-column-btn" onClick={this.addColumn.bind(this)}>Add Column</button>

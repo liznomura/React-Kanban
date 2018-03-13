@@ -53,7 +53,8 @@ body {
   text-transform: uppercase; }
 
 .nav__title {
-  padding: 5px; }
+  padding: 5px;
+  cursor: pointer; }
 
 .add-form {
   display: none;
@@ -305,7 +306,12 @@ POPUP
   font-weight: 900;
   font-size: 24px;
   color: #FBFBFC;
-  width: 100%;
+  width: 100%; }
+
+.popup--onload {
+  background: #58A4B0; }
+
+.popup--error {
   background: #FE4A49; }
 
 /*
@@ -351,6 +357,10 @@ BUTTONS
     border-color: black;
     color: black; }
 
-.popup-close-btn {
+.popup-close-btn--onload {
+  background: #58A4B0;
+  color: #FBFBFC; }
+
+.popup-close-btn--error {
   background: #FE4A49;
   color: #FBFBFC; }

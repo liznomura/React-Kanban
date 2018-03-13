@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import Card from '../../components/card.js'
-import Popup from '../../components/popup.js'
-import { moveCard, setDrag, editColumnTitle, togglePopup } from '../../actions'
+import { moveCard, setDrag, editColumnTitle, toggleErrorPopup } from '../../actions'
 
 class Columns extends PureComponent {
   constructor(props) {
@@ -87,7 +86,7 @@ class Columns extends PureComponent {
   onDeleteClick () { // checks if there are cards in column before deleting column
     if (this.props.cards.some(card => card.colId === this.props.colId)) {
 
-      this.props.togglePopup()
+      this.props.toggleErrorPopup()
 
     } else {
       this.props.handleColumnDelete(this.props.colId)
@@ -154,7 +153,7 @@ const mapStateToProps = state => {
   return {
     dragging: state.dragging,
     cards: state.cards,
-    showPopup: state.showPopup
+    showErrorPopup: state.showErrorPopup
   }
 }
 
@@ -171,8 +170,8 @@ const mapDispatchToProps = dispatch => {
     editColumnTitle: (id, newTitle) => {
       dispatch(editColumnTitle(id, newTitle))
     },
-    togglePopup: () => {
-      dispatch(togglePopup())
+    toggleErrorPopup: () => {
+      dispatch(toggleErrorPopup())
     }
   }
 }
