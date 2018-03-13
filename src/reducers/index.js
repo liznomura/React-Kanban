@@ -1,9 +1,10 @@
-import { ADD_CARD, EDIT_CARD, DEL_CARD, MOVE_CARD, SET_DRAG, TOGGLE_EDIT, ADD_COLUMN, EDIT_COLUMN_TITLE, DEL_COLUMN, TOGGLE_POPUP } from '../actions'
+import { ADD_CARD, EDIT_CARD, DEL_CARD, MOVE_CARD, SET_DRAG, TOGGLE_EDIT, ADD_COLUMN, EDIT_COLUMN_TITLE, DEL_COLUMN, TOGGLE_ERRORPOPUP, TOGGLE_INITIALPOPUP } from '../actions'
 
 const initialState = {
   editing: false,
   dragging: false,
-  showPopup: false,
+  showErrorPopup: false,
+  showInitialPopup: true,
   columns: [
     {
       id:0,
@@ -116,8 +117,11 @@ const kanbanReducer = (state = initialState, action) => {
           }
         )
 
-      case TOGGLE_POPUP:
-        return Object.assign ({}, state, { showPopup: !state.showPopup })
+      case TOGGLE_ERRORPOPUP:
+        return Object.assign ({}, state, { showErrorPopup: !state.showErrorPopup })
+
+      case TOGGLE_INITIALPOPUP:
+        return Object.assign({}, state, { showInitialPopup: !state.showInitialPopup })
 
     default:
       return state
