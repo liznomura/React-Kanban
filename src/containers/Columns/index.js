@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import Card from '../../components/card.js'
-import Popup from '../../components/popup.js'
 import { moveCard, setDrag, editColumnTitle, togglePopup } from '../../actions'
 
 class Columns extends PureComponent {
