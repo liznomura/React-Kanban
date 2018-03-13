@@ -304,6 +304,9 @@ POPUP
   .popup__content a {
     color: #58A4B0; }
 
+.popup__content--onload {
+  text-align: left; }
+
 .popup__content--header {
   padding-top: 2px;
   padding-bottom: 2px;

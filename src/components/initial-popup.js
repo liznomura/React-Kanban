@@ -4,12 +4,27 @@ import { connect } from 'react-redux'
 class InitialPopup extends PureComponent {
 
   render() {
+    const style = {
+      textAlign: 'left',
+      margin: '.5rem'
+    };
+
     return (
       <div className="popup">
         <div className="popup__content">
           <div className="popup__content--header popup--onload">Welcome!</div>
-          <p>Hi there! Welcome to my project, React Kanban! It's a simple Kanban board made with React for the UI, Redux to handle state, Express as the server, and Sass for styling. Please visit my <a href="https://github.com/liznomura/React-Kanban" target="_blank">Github</a> to see the code! Thanks for visiting!</p>
-          <button className="btn popup-close-btn--onload" onClick={this.props.togglePopup}>Got it!</button>
+          <div style={style}>
+            <p>Hi there! Welcome to my project, React Kanban!</p>
+            It's a simple Kanban board made with:
+            <ul>
+              <li><b>React</b> for the UI</li>
+              <li><b>Redux</b> to handle state</li>
+              <li><b>Express</b> as the server</li>
+              <li><b>Sass</b> for styling.</li>
+            </ul>
+          </div>
+          <p>Please visit my <a href="https://github.com/liznomura/React-Kanban" target="_blank" rel="noopener noreferrer">Github</a> to see the code! Thanks for visiting!</p>
+          <button className="btn popup-close-btn--onload" onClick={this.props.togglePopup}>Cool!</button>
         </div>
       </div>
     );
