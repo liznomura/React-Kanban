@@ -104,6 +104,10 @@ body {
 .nav__title {
   padding: 5px;
   cursor: pointer;
+
+  &:hover {
+    color: $yellow;
+  }
 }
 
 .add-form {
@@ -416,6 +420,10 @@ POPUP
   width: $popup-width;
   margin: auto;
   background: $offwhite;
+
+  a {
+    color: $blue;
+  }
 }
 
 .popup__content--header {

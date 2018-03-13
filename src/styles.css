@@ -55,6 +55,8 @@ body {
 .nav__title {
   padding: 5px;
   cursor: pointer; }
+  .nav__title:hover {
+    color: #FED766; }
 
 .add-form {
   display: none;
@@ -299,6 +301,8 @@ POPUP
   width: 250px;
   margin: auto;
   background: #FBFBFC; }
+  .popup__content a {
+    color: #58A4B0; }
 
 .popup__content--header {
   padding-top: 2px;
