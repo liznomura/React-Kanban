@@ -5,6 +5,7 @@ import Nav from '../../components/nav.js'
 import NewCardForm from '../NewCardForm'
 import KanbanBoard from '../KanbanBoard'
 import Popup from '../../components/popup'
+import InitialPopup from '../../components/initial-popup'
 
 class App extends PureComponent {
 
@@ -29,11 +30,7 @@ class App extends PureComponent {
         <KanbanBoard />
         {
           this.props.showInitialPopup ?
-          <Popup
-          text="Hi there! Welcome to my project, React Kanban! It's a simple kanban board made with React.js, Redux to handle state, and Sass for styling. Please visit my github to see the code!"
-          popupType="onload"
-          popupHeader="Welcome!"
-          btnText="Got it!"
+          <InitialPopup
           togglePopup={this.toggleInitialPopup.bind(this)}/>
             :
           ''
